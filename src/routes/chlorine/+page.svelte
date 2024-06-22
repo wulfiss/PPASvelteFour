@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import Downloadbtn  from './downloadButton/downloadBtn.svelte';
+  import PaginationBtn from '$lib/components/paginationButton/paginationBtn.svelte';
   
   export let data;
   
@@ -11,20 +12,37 @@
 
 
   $: filteredItems = data.props.freechlorine.filter((item) => {
-            const searchLower = searchTerm.toLowerCase();
+    const searchLower = searchTerm.toLowerCase();
             
-            return item.date.toLowerCase().includes(searchLower) || 
-                item.location.toLowerCase().includes(searchLower) ||
-                item.tap.toString().toLowerCase().includes(searchLower);
-            });
-        
+    return item.date.toLowerCase().includes(searchLower) || 
+           item.location.toLowerCase().includes(searchLower) ||
+           item.tap.toString().toLowerCase().includes(searchLower);
+  });
+  
+  let currentPage = 1;
+  let itemsPerPage = 10;
 
+  $: totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
-function handleClick() {
-    goto('/chlorine/form');
-}
+  $: paginatedItems = filteredItems.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
-  </script>
+  $: {
+    searchTerm;
+    currentPage = 1;
+  }
+  
+  function handlePageChange(event: CustomEvent< {page: number}>){
+    currentPage = event.detail.page;
+  }
+
+  function handleClick() {
+      goto('/chlorine/form');
+  }
+
+</script>
   
 <div class="overflow-x-auto">
   <label class="input input-bordered flex items-center gap-2">
@@ -44,7 +62,7 @@ function handleClick() {
       </thead>
       <tbody>
         <!-- body -->
-        {#each filteredItems as item, i}
+        {#each paginatedItems as item, i}
         <tr>
           <th class="text-center">{item.date}</th>
           <td class="text-center">{item.time}</td>
@@ -56,6 +74,13 @@ function handleClick() {
       </tbody>
     </table>
   </div>
-
+  {#if filteredItems.length > 0}
+  <PaginationBtn totalItems={filteredItems.length} 
+  {itemsPerPage} 
+  {currentPage} 
+  on:pageChange={handlePageChange}/>
+  {:else}
+  <p class="text-center">No hay datos</p>
+  {/if}
   <button class="btn fixed bottom-4 right-40" on:click={handleClick}>Agregar medición</button>
   <Downloadbtn />
