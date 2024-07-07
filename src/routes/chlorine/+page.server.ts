@@ -5,8 +5,8 @@ export const load = async ({ depends }) => {
 
   try {
     depends('freechlorine');
-    const { data: freechlorine, error: supabaseError } = await supabase
-      .from('freechlorine')
+    const { data: cloroLibre, error: supabaseError } = await supabase
+      .from('cloroLibre')
       .select('*')
       .order("date", { ascending: false });
 
@@ -17,7 +17,7 @@ export const load = async ({ depends }) => {
     }
 
     return {
-      props: { freechlorine }
+      props: { cloroLibre }
     };
 
   } catch (err) {

@@ -4,19 +4,17 @@
   import PaginationBtn from '$lib/components/paginationButton/paginationBtn.svelte';
   
   export let data;
-  
-  console.log(typeof data.props.freechlorine)
     
   let filteredItems;
   let searchTerm = "";
 
 
-  $: filteredItems = data.props.freechlorine.filter((item) => {
+  $: filteredItems = data.props.cloroLibre.filter((item) => {
     const searchLower = searchTerm.toLowerCase();
             
-    return item.date.toLowerCase().includes(searchLower) || 
-           item.location.toLowerCase().includes(searchLower) ||
-           item.tap.toString().toLowerCase().includes(searchLower);
+    return item.fecha.toLowerCase().includes(searchLower) || 
+           item.sector.toLowerCase().includes(searchLower) ||
+           item.grifo.toString().toLowerCase().includes(searchLower);
   });
   
   let currentPage = 1;
@@ -67,11 +65,11 @@
         <!-- body -->
         {#each paginatedItems as item, i}
         <tr>
-          <th class="text-center">{item.date}</th>
-          <td class="text-center">{item.time}</td>
-          <td class="text-center">{item.location}</td>
-          <td class="text-center">{item.tap}</td>
-          <td class="text-center">{item.freeChlorine}</td>
+          <th class="text-center">{item.fecha}</th>
+          <td class="text-center">{item.hora}</td>
+          <td class="text-center">{item.sector}</td>
+          <td class="text-center">{item.grifo}</td>
+          <td class="text-center">{item.concentracion}</td>
         </tr>
         {/each}
       </tbody>

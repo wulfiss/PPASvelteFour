@@ -12,21 +12,21 @@
 
     
   let data = {
-    date: today,
-    time: time,
-    location: 'Zona Intermedia',
-    tap: 122,
-    freeChlorine: 0.00
+    fecha: today,
+    hora: time,
+    sector: 'Zona Intermedia',
+    grifo: 122,
+    concentracion: 0.00
   };
 
 
   function resetForm() {
     data = {
-      date: today,
-      time: time,
-      location: 'Zona Intermedia',
-      tap: 122,
-      freeChlorine: 0.00
+      fecha: today,
+      hora: time,
+      sector: 'Zona Intermedia',
+      grifo: 122,
+      concentracion: 0.00
     };
     goto('/chlorine');
   }
@@ -61,7 +61,7 @@
             <div class="label">
               <span class="label-text">Fecha</span>
             </div>
-            <input type="date" name="date" bind:value={data.date} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+            <input type="date" name="date" bind:value={data.fecha} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
             <div class="label">
             </div>
           </label>
@@ -70,7 +70,7 @@
             <div class="label">
               <span class="label-text">Hora</span>
             </div>
-            <input type="time" name="time" bind:value={data.time} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+            <input type="time" name="time" bind:value={data.hora} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
             <div class="label">
             </div>
           </label>
@@ -79,7 +79,7 @@
             <div class="label">
               <span class="label-text">Sector</span>
             </div>
-            <select bind:value={data.location} name="location" class="select select-bordered w-full max-w-xs">
+            <select bind:value={data.sector} name="location" class="select select-bordered w-full max-w-xs">
               <option>Zona Sucia</option>
               <option selected>Zona Intermedia</option>
               <option>Sala de Eviscerado</option>
@@ -94,7 +94,7 @@
             <div class="label">
               <span class="label-text">Grifo</span>
             </div>
-            <input bind:value={data.tap} type="number" name="tap" min=00 placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+            <input bind:value={data.grifo} type="number" name="tap" min=00 placeholder="Type here" class="input input-bordered w-full max-w-xs" />
             <div class="label">
             </div>
           </label>
@@ -103,7 +103,7 @@
             <div class="label">
               <span class="label-text">Concentración (ppm)</span>
             </div>
-            <input type="number" bind:value={data.freeChlorine} name="freeChlorine" min=0 max=2.5 step=0.01 placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+            <input type="number" bind:value={data.concentracion} name="freeChlorine" min=0 max=2.5 step=0.01 placeholder="Type here" class="input input-bordered w-full max-w-xs" />
             <div class="label">
             </div>
           </label>
