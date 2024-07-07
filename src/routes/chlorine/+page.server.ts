@@ -4,11 +4,11 @@ import { supabase } from '$lib/dataBase/supabaseClient.js';
 export const load = async ({ depends }) => {
 
   try {
-    depends('freechlorine');
+    depends('clorLibre');
     const { data: cloroLibre, error: supabaseError } = await supabase
       .from('cloroLibre')
       .select('*')
-      .order("date", { ascending: false });
+      .order("fecha", { ascending: false });
 
     if (supabaseError) {
       throw error(500, {

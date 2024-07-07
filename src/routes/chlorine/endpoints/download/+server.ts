@@ -6,7 +6,7 @@ export const GET: RequestHandler = async () => {
     const { data, error: dbError } = await supabase
         .from("cloroLibre")
         .select("*")
-        .order("date", { ascending: false });
+        .order("fecha", { ascending: false });
 
     if (dbError) {
         throw error(500, { message: dbError.message });
