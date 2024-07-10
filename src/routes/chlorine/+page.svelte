@@ -2,14 +2,16 @@
   import { goto } from '$app/navigation';
   import Downloadbtn  from './downloadButton/downloadBtn.svelte';
   import PaginationBtn from '$lib/components/paginationButton/paginationBtn.svelte';
-  
+  import DeleteButton from './deleteButton/DeleteButton.svelte';
+  import { invalidate } from "$app/navigation";
+
   export let data;
     
-  let filteredItems;
+  let filteredItems: any[];
   let searchTerm = "";
 
 
-  $: filteredItems = data.props.cloroLibre.filter((item) => {
+  $: filteredItems = data.cloroLibre.filter((item) => {
     const searchLower = searchTerm.toLowerCase();
             
     return item.fecha.toLowerCase().includes(searchLower) || 
@@ -38,6 +40,14 @@
 
   function handleClick() {
       goto('/chlorine/form');
+  }
+
+  async function handleEdit(item: { id: any; }) {
+    goto(`/chlorine/editButton/${item.id}`);
+  }
+
+  async function handleItemDeleted(event: CustomEvent<number>) {
+    await invalidate('cloroLibre');
   }
 
 </script>
@@ -70,6 +80,9 @@
           <td class="text-center">{item.sector}</td>
           <td class="text-center">{item.grifo}</td>
           <td class="text-center">{item.concentracion}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-primary mr-2">Editar</button>
+            <DeleteButton id={item.id} on:deleted={handleItemDeleted} />
         </tr>
         {/each}
       </tbody>
