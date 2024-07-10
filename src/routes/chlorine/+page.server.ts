@@ -1,28 +1,43 @@
-import { error } from '@sveltejs/kit'; // Import SvelteKit's error function
+import { error, fail, redirect } from '@sveltejs/kit'; // Import SvelteKit's error function
 import { supabase } from '$lib/dataBase/supabaseClient.js';
+import type { Actions, PageServerLoad } from './$types';
 
-export const load = async ({ depends }) => {
+/* export const actions: Actions = {
+  deleteItem: async ({ request }) => {
+    const formData = await request.formData();
+    const id = formData.get('id');
 
-  try {
-    depends('clorLibre');
-    const { data: cloroLibre, error: supabaseError } = await supabase
-      .from('cloroLibre')
-      .select('*')
-      .order("fecha", { ascending: false });
-
-    if (supabaseError) {
-      throw error(500, {
-        message: 'Error fetching data from Supabase: ' + supabaseError.message
-      });
+    if (!id) {
+      return fail(400, {message: 'Missing ID'});
     }
 
-    return {
-      props: { cloroLibre }
-    };
+    const { error: supabaseError } = await supabase
+      .from('cloroLibre')
+      .delete()
+      .eq('id', id);
 
-  } catch (err) {
-    throw error(500, {
-      message: 'An error occurred while fetching data: ' + err.message
-    });
+    if (supabaseError) {
+      console.error('Error deleting data from Supabase:', supabaseError.message);
+      return fail(500, {message: 'Error deleting data from Supabase'});
+    }
+
+    throw redirect(303, '/chlorine');
   }
-};
+} */
+
+export const load: PageServerLoad = async ({ depends }) => {
+  depends('cloroLibre');
+
+  const {data: cloroLibre, error: supabaseError} = await supabase
+    .from('cloroLibre')
+    .select('*')
+    .order('fecha', {ascending: false});
+
+  if (supabaseError) {
+    throw error(500, 'Error fetching data from Supabase' + supabaseError.message);
+  }
+
+  return {
+    cloroLibre
+  }
+}
