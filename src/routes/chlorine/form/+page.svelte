@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { onMount } from "svelte";
+	  import { onMount } from "svelte";
     import { goto } from '$app/navigation';
   
     let date = new Date();
@@ -49,6 +49,9 @@
       console.error('Error al enviar los datos');
     }
   }
+  </script>
+
+
   </script>
   
   <!-- <button class="btn fixed bottom-4 right-4" on:click={() =>my_modal_1.showModal()}>Agregar medición</button> -->
