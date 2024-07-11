@@ -51,9 +51,6 @@
   }
   </script>
 
-
-  </script>
-  
   <!-- <button class="btn fixed bottom-4 right-4" on:click={() =>my_modal_1.showModal()}>Agregar medición</button> -->
   
   <dialog id="modal" class="modal" open>
