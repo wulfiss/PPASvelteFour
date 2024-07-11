@@ -26,18 +26,19 @@ import type { Actions, PageServerLoad } from './$types';
 } */
 
 export const load: PageServerLoad = async ({ depends }) => {
-  depends('cloroLibre');
+	depends('cloroLibre');
 
-  const {data: cloroLibre, error: supabaseError} = await supabase
-    .from('cloroLibre')
-    .select('*')
-    .order('id', {ascending: false});
+	const { data: cloroLibre, error: supabaseError } = await supabase
+		.from('cloroLibre')
+		.select('*')
+		.order('fecha', { ascending: false })
+		.order('hora', { ascending: false });
 
-  if (supabaseError) {
-    throw error(500, 'Error fetching data from Supabase' + supabaseError.message);
-  }
+	if (supabaseError) {
+		throw error(500, 'Error fetching data from Supabase' + supabaseError.message);
+	}
 
-  return {
-    cloroLibre
-  }
-}
+	return {
+		cloroLibre
+	};
+};
