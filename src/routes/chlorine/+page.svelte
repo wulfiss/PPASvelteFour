@@ -2,7 +2,6 @@
   import { goto } from '$app/navigation';
   import Downloadbtn  from './downloadButton/downloadBtn.svelte';
   import PaginationBtn from '$lib/components/paginationButton/paginationBtn.svelte';
-  import DeleteButton from './deleteButton/DeleteButton.svelte';
   import { invalidate } from "$app/navigation";
 
   export let data;
@@ -46,9 +45,18 @@
     goto(`/chlorine/editButton/${item.id}`);
   }
 
-  async function handleItemDeleted(event: CustomEvent<number>) {
-    await invalidate('cloroLibre');
+  async function handleDelete(item: { id: any; }) {
+    goto(`/chlorine/deleteButton/${item.id}`);
   }
+
+ /*  async function shortTime (time: { toLocaleTimeString: (arg0: string, arg1: { hour: string; minute: string; }) => any; }) {
+    const timetrimmed = await time.toLocaleTimeString(navigator.language, {
+      hour: '2-digit',
+      minute:'2-digit'
+    })
+
+    return timetrimmed;
+  } */
 
 </script>
 <div id="header" class="flex flex-row justify-center gap-2">
@@ -80,9 +88,13 @@
           <td class="text-center">{item.sector}</td>
           <td class="text-center">{item.grifo}</td>
           <td class="text-center">{item.concentracion}</td>
-          <td class="text-center">
+          <td class="text-center flex">
             <button class="btn btn-sm btn-primary mr-2">Editar</button>
-            <DeleteButton id={item.id} on:deleted={handleItemDeleted} />
+            <button on:click={() => handleDelete(item)} class='btn btn-sm btn-error'>
+              Eliminar
+          </button>
+            <!-- <DeleteButton id={item.id} on:deleted={handleItemDeleted} /> -->
+
         </tr>
         {/each}
       </tbody>
