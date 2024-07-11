@@ -1,28 +1,21 @@
-import { error } from '@sveltejs/kit'; // Import SvelteKit's error function
+import { error, fail, redirect } from '@sveltejs/kit'; // Import SvelteKit's error function
 import { supabase } from '$lib/dataBase/supabaseClient.js';
+import type { Actions, PageServerLoad } from './$types';
 
-export const load = async ({ depends }) => {
+export const load: PageServerLoad = async ({ depends }) => {
+	depends('cloroLibre');
 
-  try {
-    depends('clorLibre');
-    const { data: cloroLibre, error: supabaseError } = await supabase
-      .from('cloroLibre')
-      .select('*')
-      .order("fecha", { ascending: false });
+	const { data: cloroLibre, error: supabaseError } = await supabase
+		.from('cloroLibre')
+		.select('*')
+		.order('fecha', { ascending: false })
+		.order('hora', { ascending: false });
 
-    if (supabaseError) {
-      throw error(500, {
-        message: 'Error fetching data from Supabase: ' + supabaseError.message
-      });
-    }
+	if (supabaseError) {
+		throw error(500, 'Error fetching data from Supabase' + supabaseError.message);
+	}
 
-    return {
-      props: { cloroLibre }
-    };
-
-  } catch (err) {
-    throw error(500, {
-      message: 'An error occurred while fetching data: ' + err.message
-    });
-  }
+	return {
+		cloroLibre
+	};
 };
