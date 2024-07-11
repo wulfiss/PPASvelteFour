@@ -40,46 +40,34 @@
 		currentPage = event.detail.page;
 	}
 
-	function handleClick() {
-		goto('/chlorine/form');
-	}
-
 	async function handleEdit(item: { id: any }) {
 		goto(`/chlorine/editButton/${item.id}`);
 	}
 
-	async function handleDelete(item: { id: any }) {
-		goto(`/chlorine/deleteButton/${item.id}`);
-	}
+	type ModalState = {
+		isFormOpen: boolean;
+		itemToDelete: any | null;
+	};
 
-	let itemToDelete: any = null;
-	let flag: any = null;
+	const modalState: ModalState = {
+		isFormOpen: false,
+		itemToDelete: null
+	};
 
-	function openFormModal() {
-		flag = true;
-	}
+	const openFormModal = () => (modalState.isFormOpen = true);
+	const closeFormModal = () => (modalState.isFormOpen = false);
+	const openDeleteModal = (item: any) => (modalState.itemToDelete = item);
+	const closeDeleteModal = () => (modalState.itemToDelete = null);
 
-	function closeFormModal() {
-		flag = null;
-	}
-
-	function openDeleteModal(item: any) {
-		itemToDelete = item;
-	}
-
-	function closeDeleteModal() {
-		itemToDelete = null;
-	}
-
-	async function onDeleteModal() {
+	const onDeleteModal = async () => {
 		await invalidate('cloroLibre');
 		closeDeleteModal();
-	}
+	};
 
-	async function onFormModal() {
+	const onFormModal = async () => {
 		await invalidate('cloroLibre');
 		closeFormModal();
-	}
+	};
 </script>
 
 <div id="header" class="flex flex-row justify-center gap-2">
@@ -159,9 +147,13 @@
 </div>
 
 <DeleteConfirmationModal
-	bind:item={itemToDelete}
+	bind:item={modalState.itemToDelete}
 	on:close={closeDeleteModal}
 	on:deleteSuccess={onDeleteModal}
 />
 
-<AddFormModal bind:flag on:close={closeFormModal} on:submitSuccess={onFormModal} />
+<AddFormModal
+	bind:flag={modalState.isFormOpen}
+	on:close={closeFormModal}
+	on:submitSuccess={onFormModal}
+/>
