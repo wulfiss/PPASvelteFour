@@ -68,6 +68,18 @@
 		await invalidate('cloroLibre');
 		closeFormModal();
 	};
+
+	$: concentracionClass = (concentracion: number) => {
+		if (concentracion >= 0.3 && concentracion <= 0.8) {
+			return 'badge badge-success gap-2';
+		} else if (concentracion > 0.8 && concentracion <= 1) {
+			return 'badge badge-warning gap-2';
+		} else if (concentracion < 0.3 && concentracion >= 0.2) {
+			return 'badge badge-warning gap-2';
+		} else {
+			return 'badge badge-error gap-2';
+		}
+	};
 </script>
 
 <div id="header" class="flex flex-row justify-center gap-2">
@@ -120,7 +132,11 @@
 					<td class="text-center">{item.hora}</td>
 					<td class="text-center">{item.sector}</td>
 					<td class="text-center">{item.grifo}</td>
-					<td class="text-center">{item.concentracion}</td>
+					<td class="text-center">
+						<div class={concentracionClass(item.concentracion)}>
+							{item.concentracion}
+						</div>
+					</td>
 					<td class="text-center flex">
 						<button class="btn btn-sm btn-primary mr-2">Editar</button>
 						<button on:click={() => openDeleteModal(item)} class="btn btn-sm btn-error">
