@@ -31,7 +31,7 @@ export const load: PageServerLoad = async ({ depends }) => {
   const {data: cloroLibre, error: supabaseError} = await supabase
     .from('cloroLibre')
     .select('*')
-    .order('fecha', {ascending: false});
+    .order('id', {ascending: false});
 
   if (supabaseError) {
     throw error(500, 'Error fetching data from Supabase' + supabaseError.message);
