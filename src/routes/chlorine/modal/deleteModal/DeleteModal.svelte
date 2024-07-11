@@ -31,7 +31,7 @@
 
 {#if item}
 	<dialog id="modal" class="modal" open>
-		<div class="card bg-neutral text-neutral-content w-96">
+		<div class="card bg-base-100 w-96 shadow-xl">
 			<div class="card-body items-center text-center">
 				<h2 class="card-title">¿Estás seguro de eliminar el registro?</h2>
 				<p></p>
