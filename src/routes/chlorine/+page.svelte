@@ -71,13 +71,13 @@
 
 	$: concentracionClass = (concentracion: number) => {
 		if (concentracion >= 0.3 && concentracion <= 0.8) {
-			return 'badge badge-success gap-2';
+			return 'badge badge-lg badge-success gap-2';
 		} else if (concentracion > 0.8 && concentracion <= 1) {
-			return 'badge badge-warning gap-2';
+			return 'badge badge-lg badge-warning gap-2';
 		} else if (concentracion < 0.3 && concentracion >= 0.2) {
-			return 'badge badge-warning gap-2';
+			return 'badge badge-lg badge-warning gap-2';
 		} else {
-			return 'badge badge-error gap-2';
+			return 'badge badge-lg badge-error gap-2';
 		}
 	};
 </script>
@@ -134,11 +134,11 @@
 					<td class="text-center">{item.grifo}</td>
 					<td class="text-center">
 						<div class={concentracionClass(item.concentracion)}>
-							{item.concentracion}
+							{item.concentracion.toFixed(2)}
 						</div>
 					</td>
 					<td class="text-center flex">
-						<button class="btn btn-sm btn-primary mr-2">Editar</button>
+						<!-- <button class="btn btn-sm btn-primary mr-2">Editar</button> -->
 						<button on:click={() => openDeleteModal(item)} class="btn btn-sm btn-error">
 							Eliminar
 						</button>

@@ -141,6 +141,15 @@
 						/>
 						<div class="label"></div>
 					</label>
+
+<!-- 					<label class="form-control w-full max-w-xs">
+						<div class="label">
+						  	<span class="label-text">Observaciones</span>
+						</div>
+							<textarea class="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+						<div class="label"></div>
+					</label> -->
+
 					<div class="flex space-x-1">
 						<button
 							type="button"
