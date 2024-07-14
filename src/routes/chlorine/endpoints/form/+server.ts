@@ -1,9 +1,9 @@
-import { supabase } from "$lib/dataBase/supabaseClient";
+import { supaBase } from "$lib/dataBase/supabaseClient";
 import { json, error, type RequestHandler } from "@sveltejs/kit";
 
 export const POST: RequestHandler = async ({request, body}) => {
     const data = await request.json();
-    const { error: dbError } = await supabase
+    const { error: dbError } = await supaBase
         .from("cloroLibre")
         .insert(data);
 

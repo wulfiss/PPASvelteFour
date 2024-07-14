@@ -1,6 +1,6 @@
 import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
-import { supabase } from "$lib/dataBase/supabaseClient";
+import { supaBase } from "$lib/dataBase/supabaseClient";
 
 export const DELETE: RequestHandler = async ({params}) => {
     const { id } = params;
@@ -9,7 +9,7 @@ export const DELETE: RequestHandler = async ({params}) => {
         return json({error: "No id provided"}, {status: 400});
     }
 
-    const { error: supabaseError } = await supabase
+    const { error: supabaseError } = await supaBase
         .from("cloroLibre")
         .delete()
         .eq("id", id);
