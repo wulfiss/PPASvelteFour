@@ -2,10 +2,10 @@ import { createBrowserClient } from "@supabase/ssr";
 import { type Handle, redirect } from "@sveltejs/kit";
 import { sequence } from "@sveltejs/kit/hooks";
 
-import { VITE_SUPABASE_ANON_KEY, VITE_SUPABASE_URL } from '$env/static/private';
+import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/private';
 
 const supabase: Handle = async ({ event, resolve }) => {
-    event.locals.supabase = createBrowserClient(VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, {
+    event.locals.supabase = createBrowserClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY, {
         cookies: {
             getAll: () => event.cookies.getAll(),
             setAll: (cookiesToSet) => {
