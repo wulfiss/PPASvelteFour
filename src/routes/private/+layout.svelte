@@ -1,4 +1,6 @@
 <script>
+	import { goto } from '$app/navigation';
+
 	export let data;
 	$: ({ supabase } = data);
 
@@ -7,6 +9,7 @@
 		if (error) {
 			console.error(error);
 		}
+		goto('/');
 	};
 </script>
 
@@ -30,6 +33,7 @@
 						/>
 					</svg>
 				</div>
+				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<ul
 					tabindex="0"
 					class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
