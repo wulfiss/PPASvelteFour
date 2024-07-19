@@ -13,7 +13,7 @@
 		if (!item) return;
 
 		try {
-			const response = await fetch(`/chlorine/endpoints/delete/${item.id}`, {
+			const response = await fetch(`/private/chlorine/endpoints/delete/${item.id}`, {
 				method: 'DELETE'
 			});
 

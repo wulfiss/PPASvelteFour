@@ -1,8 +1,7 @@
 import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
-/* import { supabase } from "$lib/dataBase/supabaseClient";
- */
-export const DELETE: RequestHandler = async ({params}) => {
+
+export const DELETE: RequestHandler = async ({ locals: {supabase, safeGetSession}, params}) => {
     const { id } = params;
 
     if(!id) {
