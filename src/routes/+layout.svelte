@@ -1,6 +1,6 @@
 <script>
-    import "tailwindcss/tailwind.css";
-    import { invalidate } from '$app/navigation';
+	import 'tailwindcss/tailwind.css';
+	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 
 	export let data;

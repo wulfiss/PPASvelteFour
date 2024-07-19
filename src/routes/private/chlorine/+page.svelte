@@ -40,10 +40,6 @@
 		currentPage = event.detail.page;
 	}
 
-	async function handleEdit(item: { id: any }) {
-		goto(`/chlorine/editButton/${item.id}`);
-	}
-
 	type ModalState = {
 		isFormOpen: boolean;
 		itemToDelete: any | null;

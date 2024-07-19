@@ -1,16 +1,3 @@
-<!-- <form method="POST" action="?/login">
-	<label>
-		Email
-		<input name="email" type="email" />
-	</label>
-	<label>
-		Password
-		<input name="password" type="password" />
-	</label>
-	<button>Login</button>
-	<button formaction="?/signup">Sign up</button>
-</form> -->
-
 <div class="hero bg-base-200 min-h-screen">
 	<div class="hero-content flex-col lg:flex-row-reverse">
 		<div class="text-center lg:text-left">

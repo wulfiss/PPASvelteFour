@@ -37,7 +37,7 @@
 
 	async function onFormSubmit() {
 		try {
-			const response = await fetch('/chlorine/endpoints/form', {
+			const response = await fetch('/private/chlorine/endpoints/form', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -142,7 +142,7 @@
 						<div class="label"></div>
 					</label>
 
-<!-- 					<label class="form-control w-full max-w-xs">
+					<!-- 					<label class="form-control w-full max-w-xs">
 						<div class="label">
 						  	<span class="label-text">Observaciones</span>
 						</div>
