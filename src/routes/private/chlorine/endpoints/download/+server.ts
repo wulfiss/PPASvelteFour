@@ -1,8 +1,7 @@
-import { supabase } from "$lib/dataBase/supabaseClient";
 import { error, type RequestHandler } from "@sveltejs/kit";
 import * as XLSX from 'xlsx';
 
-export const GET: RequestHandler = async () => {
+export const GET: RequestHandler = async ({ locals: { supabase }}) => {
     const { data, error: dbError } = await supabase
         .from("cloroLibre")
         .select("*")
