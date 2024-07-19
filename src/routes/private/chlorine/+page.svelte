@@ -1,25 +1,28 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import Downloadbtn from './downloadButton/downloadBtn.svelte';
 	import PaginationBtn from '$lib/components/paginationButton/paginationBtn.svelte';
 	import { invalidate } from '$app/navigation';
 	import DeleteConfirmationModal from './modal/deleteModal/DeleteModal.svelte';
 	import AddFormModal from './modal/addFormModal/AddFormModal.svelte';
+	import { page } from '$app/stores';
 
-	export let data;
+	/* export let data; */
+	$: data = $page.data;
 
-	let filteredItems: any[];
+	/* let filteredItems: any[]; */
 	let searchTerm = '';
 
-	$: filteredItems = data.cloroLibre.filter((item) => {
-		const searchLower = searchTerm.toLowerCase();
+	$: filteredItems = data.cloroLibre.filter(
+		(item: { fecha: string; sector: string; grifo: { toString: () => string } }) => {
+			const searchLower = searchTerm.toLowerCase();
 
-		return (
-			item.fecha.toLowerCase().includes(searchLower) ||
-			item.sector.toLowerCase().includes(searchLower) ||
-			item.grifo.toString().toLowerCase().includes(searchLower)
-		);
-	});
+			return (
+				item.fecha.toLowerCase().includes(searchLower) ||
+				item.sector.toLowerCase().includes(searchLower) ||
+				item.grifo.toString().toLowerCase().includes(searchLower)
+			);
+		}
+	);
 
 	let currentPage = 1;
 	let itemsPerPage = 10;
@@ -56,12 +59,12 @@
 	const closeDeleteModal = () => (modalState.itemToDelete = null);
 
 	const onDeleteModal = async () => {
-		await invalidate('cloroLibre');
+		await invalidate('supabase:db:cloroLibre');
 		closeDeleteModal();
 	};
 
 	const onFormModal = async () => {
-		await invalidate('cloroLibre');
+		await invalidate('supabase:db:cloroLibre');
 		closeFormModal();
 	};
 
