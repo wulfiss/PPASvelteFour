@@ -1,14 +1,4 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-
-	/* export let flag: any = null;
-	 */
-	const dispatch = createEventDispatcher();
-
-	function closeModal() {
-		dispatch('close');
-	}
-
 	let date = new Date();
 	let today = date.toISOString().slice(0, 10); // YYYY-MM-DD
 	let time = date.toLocaleTimeString('en-US', {
@@ -19,25 +9,63 @@
 
 	let data = {
 		fecha: today,
-		pulmones: 0,
-		cogotes: 0,
-		cloacas: 0,
-		pataFracturadas: 0,
-		sangre: false,
-		observaciones: ''
+		pollos_chicos: false,
+		pollos_medianos: false,
+		pollos_grandes: false,
+		pollos_desparejos: false,
+		buches: 0,
+		buches_pequenos: false,
+		buches_medianos: false,
+		buches_grandes: false,
+		pollos_rotos: 0,
+		dislocadas_hematomas_recientes: 0,
+		dislocadas_hematomas_viejos: 0,
+		dislocadas_sin_hematomas: 0,
+		fracturadas_hematomas_recientes: 0,
+		fracturadas_hematomas_viejos: 0,
+		fracturadas_sin_hematomas: 0,
+		puntas_quebradas: 0,
+		miopatias: 0,
+		dermatitis: 0,
+		dermatitis_leve: false,
+		dermatitis_moderada: false,
+		dermatitis_severa: false,
+		traqueas: 0,
+		granja: '',
+		observaciones: '',
 	};
 
 	function resetForm() {
 		data = {
 			fecha: today,
-			pulmones: 0,
-			cogotes: 0,
-			cloacas: 0,
-			pataFracturadas: 0,
-			sangre: false,
-			observaciones: ''
+			pollos_chicos: false,
+			pollos_medianos: false,
+			pollos_grandes: false,
+			pollos_desparejos: false,
+			buches: 0,
+			buches_pequenos: false,
+			buches_medianos: false,
+			buches_grandes: false,
+			pollos_rotos: 0,
+			dislocadas_hematomas_recientes: 0,
+			dislocadas_hematomas_viejos: 0,
+			dislocadas_sin_hematomas: 0,
+			fracturadas_hematomas_recientes: 0,
+			fracturadas_hematomas_viejos: 0,
+			fracturadas_sin_hematomas: 0,
+			puntas_quebradas: 0,
+			miopatias: 0,
+			dermatitis: 0,
+			dermatitis_leve: false,
+			dermatitis_moderada: false,
+			dermatitis_severa: false,
+			traqueas: 0,
+			granja: '',
+			observaciones: '',
 		};
 	}
+
+
 
 	async function onFormSubmit() {
 		try {
@@ -53,17 +81,15 @@
 			}
 
 			resetForm();
-			dispatch('submitSuccess');
 		} catch (error) {
 			console.error('Error:', error);
 			alert('Error al enviar los datos');
 		}
 	}
 
-	$: console.log(data.sangre);
 </script>
 
-<form id="clhonineForm" method="POST" on:submit|preventDefault={onFormSubmit}>
+<form id="intermediaForm" method="POST" on:submit|preventDefault={onFormSubmit}>
 	<label class="form-control w-full max-w-xs">
 		<div class="label">
 			<span class="label-text">Fecha</span>
