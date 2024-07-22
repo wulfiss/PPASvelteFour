@@ -22,7 +22,7 @@
 		pulmones: 0,
 		cogotes: 0,
 		cloacas: 0,
-		patasFracturadas: 0,
+		pataFracturadas: 0,
 		sangre: false,
 		observaciones: ''
 	};
@@ -41,7 +41,7 @@
 
 	async function onFormSubmit() {
 		try {
-			const response = await fetch('/private/eviscerado/endpoints/eviscerado', {
+			const response = await fetch('/private/chlorine/endpoints/form', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -128,7 +128,7 @@
 			<span class="label-text">Patas Fracturadas (%)</span>
 		</div>
 		<input
-			bind:value={data.patasFracturadas}
+			bind:value={data.pataFracturadas}
 			type="number"
 			name="pataFracturadas"
 			min="0"
@@ -164,6 +164,13 @@
 	</label>
 
 	<div class="flex space-x-1">
+		<button
+			type="button"
+			class="btn btn-error"
+			on:click={() => {
+				closeModal();
+			}}>Cerrar</button
+		>
 		<button type="submit" class="btn flex-1 btn-success">Guardar</button>
 	</div>
 </form>
