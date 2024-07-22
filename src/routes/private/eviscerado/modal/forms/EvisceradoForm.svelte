@@ -1,14 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
-	/* export let flag: any = null;
-	 */
-	const dispatch = createEventDispatcher();
-
-	function closeModal() {
-		dispatch('close');
-	}
-
 	let date = new Date();
 	let today = date.toISOString().slice(0, 10); // YYYY-MM-DD
 	let time = date.toLocaleTimeString('en-US', {
@@ -33,7 +25,7 @@
 			pulmones: 0,
 			cogotes: 0,
 			cloacas: 0,
-			pataFracturadas: 0,
+			patasFracturadas: 0,
 			sangre: false,
 			observaciones: ''
 		};
@@ -53,17 +45,15 @@
 			}
 
 			resetForm();
-			dispatch('submitSuccess');
 		} catch (error) {
 			console.error('Error:', error);
 			alert('Error al enviar los datos');
 		}
 	}
 
-	$: console.log(data.sangre);
 </script>
 
-<form id="clhonineForm" method="POST" on:submit|preventDefault={onFormSubmit}>
+<form id="evisceradoForm" method="POST" on:submit|preventDefault={onFormSubmit}>
 	<label class="form-control w-full max-w-xs">
 		<div class="label">
 			<span class="label-text">Fecha</span>
