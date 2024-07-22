@@ -1,23 +1,33 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import AddFormModal from './chlorine/modal/addFormModal/AddFormModal.svelte';
+	import AddInterEvisceModal from './eviscerado/modal/addInterEvisceModal.svelte';
 
 	export let data: PageData;
 
 	type ModalState = {
 		isFormOpen: boolean;
+		isEvisceInterOpen: boolean;
 	};
 
 	const modalState: ModalState = {
-		isFormOpen: false
+		isFormOpen: false,
+		isEvisceInterOpen: false
 	};
 
 	const openFormModal = () => (modalState.isFormOpen = true);
 	const closeFormModal = () => (modalState.isFormOpen = false);
+	const openInterEvisceModal = () => (modalState.isEvisceInterOpen = true);
+	const closeInterEvisceModal = () => (modalState.isEvisceInterOpen = false);
 
 	const onFormModal = async () => {
 		/* await invalidate('cloroLibre'); */
 		closeFormModal();
+	};
+
+	const onInterEvisceModal = async () => {
+		/* await invalidate('cloroLibre'); */
+		closeInterEvisceModal();
 	};
 
 	$: ({ supabase, user } = data);
@@ -30,7 +40,7 @@
 		<li>
 			<button class="btn" on:click={openFormModal}> Agregar Cloro </button>
 		</li>
-		<li><a>Item 2</a></li>
+		<li><button class="btn" on:click={openInterEvisceModal}> Intermedia / Eviscerado </button></li>
 	</ul>
 </div>
 
@@ -38,4 +48,10 @@
 	bind:flag={modalState.isFormOpen}
 	on:close={closeFormModal}
 	on:submitSuccess={onFormModal}
+/>
+
+<AddInterEvisceModal
+	bind:flag={modalState.isEvisceInterOpen}
+	on:close={closeInterEvisceModal}
+	on:submitSuccess={onInterEvisceModal}
 />
