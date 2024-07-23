@@ -50,11 +50,10 @@
 			alert('Error al enviar los datos');
 		}
 	}
-
 </script>
 
 <form id="evisceradoForm" method="POST" on:submit|preventDefault={onFormSubmit}>
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Fecha</span>
 		</div>
@@ -63,12 +62,12 @@
 			name="date"
 			bind:value={data.fecha}
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Cogotes (%)</span>
 		</div>
@@ -78,12 +77,12 @@
 			min="0"
 			bind:value={data.cogotes}
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Pulmones (%)</span>
 		</div>
@@ -93,12 +92,12 @@
 			name="pulmones"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Cloacas (%)</span>
 		</div>
@@ -108,12 +107,12 @@
 			name="cloacas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Patas Fracturadas (%)</span>
 		</div>
@@ -123,12 +122,12 @@
 			name="pataFracturadas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Sangre en patas</span>
 
@@ -137,7 +136,7 @@
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Observaciones</span>
 			<span class="label-text-alt"></span>

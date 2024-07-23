@@ -36,7 +36,10 @@
 <div class="dropdown dropdown-top dropdown-end absolute bottom-0 right-0">
 	<div tabindex="0" role="button" class="btn m-1">Click</div>
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-	<ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+	<ul
+		tabindex="0"
+		class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow flex flex-col gap-2"
+	>
 		<li>
 			<button class="btn" on:click={openFormModal}> Agregar Cloro </button>
 		</li>

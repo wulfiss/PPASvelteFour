@@ -51,7 +51,7 @@
 </script>
 
 <form id="garrasForm" method="POST" on:submit|preventDefault={onFormSubmit}>
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Fecha</span>
 		</div>
@@ -60,57 +60,51 @@
 			name="date"
 			bind:value={data.fecha}
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Granja</span>
 		</div>
 		<input
 			type="text"
-			name="cogotes"
+			name="granja"
 			bind:value={data.granja}
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
-		<div class="label">
+	<div class="form-control">
+		<label class="label cursor-pointer">
 			<span class="label-text">Feas</span>
+			<input type="checkbox" bind:checked={data.garras_feas} class="checkbox checkbox-primary" />
+		</label>
+	</div>
 
-			<input type="checkbox" class="checkbox checkbox-primary" bind:checked={data.garras_feas} />
-		</div>
-		<div class="label"></div>
-	</label>
-
-	<label class="form-control w-full max-w-xs">
-		<div class="label">
+	<div class="form-control">
+		<label class="label cursor-pointer">
 			<span class="label-text">Regulares</span>
-
 			<input
 				type="checkbox"
-				class="checkbox checkbox-primary"
 				bind:checked={data.garras_regulares}
+				class="checkbox checkbox-primary"
 			/>
-		</div>
-		<div class="label"></div>
-	</label>
+		</label>
+	</div>
 
-	<label class="form-control w-full max-w-xs">
-		<div class="label">
+	<div class="form-control">
+		<label class="label cursor-pointer">
 			<span class="label-text">Lindas</span>
+			<input type="checkbox" bind:checked={data.garras_lindas} class="checkbox checkbox-primary" />
+		</label>
+	</div>
 
-			<input type="checkbox" class="checkbox checkbox-primary" bind:checked={data.garras_lindas} />
-		</div>
-		<div class="label"></div>
-	</label>
-
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Observaciones</span>
 			<span class="label-text-alt"></span>

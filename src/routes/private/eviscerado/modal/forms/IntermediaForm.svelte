@@ -87,7 +87,7 @@
 </script>
 
 <form id="intermediaForm" method="POST" on:submit|preventDefault={onFormSubmit}>
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Fecha</span>
 		</div>
@@ -96,12 +96,12 @@
 			name="date"
 			bind:value={data.fecha}
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Granja</span>
 		</div>
@@ -110,7 +110,7 @@
 			name="granja"
 			bind:value={data.granja}
 			placeholder="nombre"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
@@ -155,7 +155,7 @@
 
 	<div class="divider divider-primary">Buches</div>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Buches (%)</span>
 		</div>
@@ -165,7 +165,7 @@
 			name="buches"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
@@ -201,7 +201,7 @@
 
 	<div class="divider divider-primary">Alas</div>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Dislocadas sin hematomas (%)</span>
 		</div>
@@ -211,12 +211,12 @@
 			name="dislocadasSinHematomas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Dislocadas con hematomas recientes (%)</span>
 		</div>
@@ -226,12 +226,12 @@
 			name="dislocadasRecientes"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Dislocadas con hematomas viejos (%)</span>
 		</div>
@@ -241,14 +241,14 @@
 			name="dislocadasViejas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
 	<div class="divider divider-secondary"></div>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Fracturadas sin hematomas (%)</span>
 		</div>
@@ -258,12 +258,12 @@
 			name="fracturadasSinHematomas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Fracturadas con hematomas recientes (%)</span>
 		</div>
@@ -273,12 +273,12 @@
 			name="fracturadasRecientes"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Fracturadas con hematomas viejos (%)</span>
 		</div>
@@ -288,12 +288,12 @@
 			name="fracturadasViejas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Puntas fracturadas (%)</span>
 		</div>
@@ -303,13 +303,13 @@
 			name="puntasFracturadas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
 	<div class="divider divider-primary">Dermatitis</div>
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Dermatitis (%)</span>
 		</div>
@@ -319,7 +319,7 @@
 			name="puntasFracturadas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
@@ -359,7 +359,7 @@
 
 	<div class="divider divider-primary">Otros</div>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Miopatias (%)</span>
 		</div>
@@ -369,12 +369,12 @@
 			name="miopatias"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Traqueas (%)</span>
 		</div>
@@ -384,12 +384,12 @@
 			name="traqueas"
 			min="0"
 			placeholder="Type here"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-bordered w-full"
 		/>
 		<div class="label"></div>
 	</label>
 
-	<label class="form-control w-full max-w-xs">
+	<label class="form-control w-full">
 		<div class="label">
 			<span class="label-text">Observaciones</span>
 			<span class="label-text-alt"></span>
