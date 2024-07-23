@@ -62,8 +62,13 @@
 	<dialog id="modal" class="modal" open>
 		<div class="modal-box">
 			<div class="modal-action flex justify-center mt-0">
-				<form id="clhonineForm" method="POST" on:submit|preventDefault={onFormSubmit}>
-					<label class="form-control w-full max-w-xs">
+				<form
+					id="clhonineForm"
+					class="size-full"
+					method="POST"
+					on:submit|preventDefault={onFormSubmit}
+				>
+					<label class="form-control w-full">
 						<div class="label">
 							<span class="label-text">Fecha</span>
 						</div>
@@ -72,12 +77,12 @@
 							name="date"
 							bind:value={data.fecha}
 							placeholder="Type here"
-							class="input input-bordered w-full max-w-xs"
+							class="input input-bordered w-full"
 						/>
 						<div class="label"></div>
 					</label>
 
-					<label class="form-control w-full max-w-xs">
+					<label class="form-control w-full">
 						<div class="label">
 							<span class="label-text">Hora</span>
 						</div>
@@ -86,20 +91,16 @@
 							name="time"
 							bind:value={data.hora}
 							placeholder="Type here"
-							class="input input-bordered w-full max-w-xs"
+							class="input input-bordered w-full"
 						/>
 						<div class="label"></div>
 					</label>
 
-					<label class="form-control w-full max-w-xs">
+					<label class="form-control w-full">
 						<div class="label">
 							<span class="label-text">Sector</span>
 						</div>
-						<select
-							bind:value={data.sector}
-							name="location"
-							class="select select-bordered w-full max-w-xs"
-						>
+						<select bind:value={data.sector} name="location" class="select select-bordered w-full">
 							<option>Zona Sucia</option>
 							<option selected>Zona Intermedia</option>
 							<option>Sala de Eviscerado</option>
@@ -110,7 +111,7 @@
 						</select>
 					</label>
 
-					<label class="form-control w-full max-w-xs">
+					<label class="form-control w-full">
 						<div class="label">
 							<span class="label-text">Grifo</span>
 						</div>
@@ -120,12 +121,12 @@
 							name="tap"
 							min="00"
 							placeholder="Type here"
-							class="input input-bordered w-full max-w-xs"
+							class="input input-bordered w-full"
 						/>
 						<div class="label"></div>
 					</label>
 
-					<label class="form-control w-full max-w-xs">
+					<label class="form-control w-full">
 						<div class="label">
 							<span class="label-text">Concentración (ppm)</span>
 						</div>
@@ -137,12 +138,12 @@
 							max="2.5"
 							step="0.01"
 							placeholder="Type here"
-							class="input input-bordered w-full max-w-xs"
+							class="input input-bordered w-full"
 						/>
 						<div class="label"></div>
 					</label>
 
-					<!-- 					<label class="form-control w-full max-w-xs">
+					<!-- 					<label class="form-control w-full">
 						<div class="label">
 						  	<span class="label-text">Observaciones</span>
 						</div>

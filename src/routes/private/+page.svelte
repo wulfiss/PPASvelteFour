@@ -34,7 +34,7 @@
 </script>
 
 <div class="dropdown dropdown-top dropdown-end absolute bottom-0 right-0">
-	<div tabindex="0" role="button" class="btn m-1">Click</div>
+	<div tabindex="0" role="button" class="btn m-1 btn-success text-2xl font-bold">+</div>
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<ul
 		tabindex="0"
