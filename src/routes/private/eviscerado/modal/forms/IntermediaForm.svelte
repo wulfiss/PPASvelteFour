@@ -32,7 +32,7 @@
 		dermatitis_severa: false,
 		traqueas: 0,
 		granja: '',
-		observaciones: '',
+		observaciones: ''
 	};
 
 	function resetForm() {
@@ -61,11 +61,9 @@
 			dermatitis_severa: false,
 			traqueas: 0,
 			granja: '',
-			observaciones: '',
+			observaciones: ''
 		};
 	}
-
-
 
 	async function onFormSubmit() {
 		try {
@@ -86,7 +84,6 @@
 			alert('Error al enviar los datos');
 		}
 	}
-
 </script>
 
 <form id="intermediaForm" method="POST" on:submit|preventDefault={onFormSubmit}>
@@ -106,13 +103,113 @@
 
 	<label class="form-control w-full max-w-xs">
 		<div class="label">
-			<span class="label-text">Cogotes (%)</span>
+			<span class="label-text">Granja</span>
 		</div>
 		<input
+			type="text"
+			name="granja"
+			bind:value={data.granja}
+			placeholder="nombre"
+			class="input input-bordered w-full max-w-xs"
+		/>
+		<div class="label"></div>
+	</label>
+
+	<div class="divider divider-primary">Tamaños</div>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Pequeños</span>
+			<input type="checkbox" bind:checked={data.pollos_chicos} class="checkbox checkbox-primary" />
+		</label>
+	</div>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Medianos</span>
+			<input
+				type="checkbox"
+				bind:checked={data.pollos_medianos}
+				class="checkbox checkbox-primary"
+			/>
+		</label>
+	</div>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Grandes</span>
+			<input type="checkbox" bind:checked={data.pollos_grandes} class="checkbox checkbox-primary" />
+		</label>
+	</div>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Desparejos</span>
+			<input
+				type="checkbox"
+				bind:checked={data.pollos_desparejos}
+				class="checkbox checkbox-primary"
+			/>
+		</label>
+	</div>
+
+	<div class="divider divider-primary">Buches</div>
+
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">Buches (%)</span>
+		</div>
+		<input
+			bind:value={data.buches}
 			type="number"
-			name="cogotes"
+			name="buches"
 			min="0"
-			bind:value={data.cogotes}
+			placeholder="Type here"
+			class="input input-bordered w-full max-w-xs"
+		/>
+		<div class="label"></div>
+	</label>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Pequeños</span>
+			<input
+				type="checkbox"
+				bind:checked={data.buches_pequenos}
+				class="checkbox checkbox-primary"
+			/>
+		</label>
+	</div>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Medianos</span>
+			<input
+				type="checkbox"
+				bind:checked={data.buches_medianos}
+				class="checkbox checkbox-primary"
+			/>
+		</label>
+	</div>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Grandes</span>
+			<input type="checkbox" bind:checked={data.buches_grandes} class="checkbox checkbox-primary" />
+		</label>
+	</div>
+
+	<div class="divider divider-primary">Alas</div>
+
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">Dislocadas sin hematomas (%)</span>
+		</div>
+		<input
+			bind:value={data.dislocadas_sin_hematomas}
+			type="number"
+			name="dislocadasSinHematomas"
+			min="0"
 			placeholder="Type here"
 			class="input input-bordered w-full max-w-xs"
 		/>
@@ -121,12 +218,12 @@
 
 	<label class="form-control w-full max-w-xs">
 		<div class="label">
-			<span class="label-text">Pulmones (%)</span>
+			<span class="label-text">Dislocadas con hematomas recientes (%)</span>
 		</div>
 		<input
-			bind:value={data.pulmones}
+			bind:value={data.dislocadas_hematomas_recientes}
 			type="number"
-			name="pulmones"
+			name="dislocadasRecientes"
 			min="0"
 			placeholder="Type here"
 			class="input input-bordered w-full max-w-xs"
@@ -136,12 +233,29 @@
 
 	<label class="form-control w-full max-w-xs">
 		<div class="label">
-			<span class="label-text">Cloacas (%)</span>
+			<span class="label-text">Dislocadas con hematomas viejos (%)</span>
 		</div>
 		<input
-			bind:value={data.cloacas}
+			bind:value={data.dislocadas_hematomas_viejos}
 			type="number"
-			name="cloacas"
+			name="dislocadasViejas"
+			min="0"
+			placeholder="Type here"
+			class="input input-bordered w-full max-w-xs"
+		/>
+		<div class="label"></div>
+	</label>
+
+	<div class="divider divider-secondary"></div>
+
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">Fracturadas sin hematomas (%)</span>
+		</div>
+		<input
+			bind:value={data.fracturadas_sin_hematomas}
+			type="number"
+			name="fracturadasSinHematomas"
 			min="0"
 			placeholder="Type here"
 			class="input input-bordered w-full max-w-xs"
@@ -151,12 +265,12 @@
 
 	<label class="form-control w-full max-w-xs">
 		<div class="label">
-			<span class="label-text">Patas Fracturadas (%)</span>
+			<span class="label-text">Fracturadas con hematomas recientes (%)</span>
 		</div>
 		<input
-			bind:value={data.pataFracturadas}
+			bind:value={data.fracturadas_hematomas_recientes}
 			type="number"
-			name="pataFracturadas"
+			name="fracturadasRecientes"
 			min="0"
 			placeholder="Type here"
 			class="input input-bordered w-full max-w-xs"
@@ -166,10 +280,112 @@
 
 	<label class="form-control w-full max-w-xs">
 		<div class="label">
-			<span class="label-text">Sangre en patas</span>
-
-			<input type="checkbox" class="toggle" bind:checked={data.sangre} />
+			<span class="label-text">Fracturadas con hematomas viejos (%)</span>
 		</div>
+		<input
+			bind:value={data.fracturadas_hematomas_viejos}
+			type="number"
+			name="fracturadasViejas"
+			min="0"
+			placeholder="Type here"
+			class="input input-bordered w-full max-w-xs"
+		/>
+		<div class="label"></div>
+	</label>
+
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">Puntas fracturadas (%)</span>
+		</div>
+		<input
+			bind:value={data.puntas_quebradas}
+			type="number"
+			name="puntasFracturadas"
+			min="0"
+			placeholder="Type here"
+			class="input input-bordered w-full max-w-xs"
+		/>
+		<div class="label"></div>
+	</label>
+
+	<div class="divider divider-primary">Dermatitis</div>
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">Dermatitis (%)</span>
+		</div>
+		<input
+			bind:value={data.dermatitis}
+			type="number"
+			name="puntasFracturadas"
+			min="0"
+			placeholder="Type here"
+			class="input input-bordered w-full max-w-xs"
+		/>
+		<div class="label"></div>
+	</label>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Leve</span>
+			<input
+				type="checkbox"
+				bind:checked={data.dermatitis_leve}
+				class="checkbox checkbox-primary"
+			/>
+		</label>
+	</div>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Moderada</span>
+			<input
+				type="checkbox"
+				bind:checked={data.dermatitis_moderada}
+				class="checkbox checkbox-primary"
+			/>
+		</label>
+	</div>
+
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Severa</span>
+			<input
+				type="checkbox"
+				bind:checked={data.dermatitis_severa}
+				class="checkbox checkbox-primary"
+			/>
+		</label>
+	</div>
+
+	<div class="divider divider-primary">Otros</div>
+
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">Miopatias (%)</span>
+		</div>
+		<input
+			bind:value={data.miopatias}
+			type="number"
+			name="miopatias"
+			min="0"
+			placeholder="Type here"
+			class="input input-bordered w-full max-w-xs"
+		/>
+		<div class="label"></div>
+	</label>
+
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">Traqueas (%)</span>
+		</div>
+		<input
+			bind:value={data.traqueas}
+			type="number"
+			name="traqueas"
+			min="0"
+			placeholder="Type here"
+			class="input input-bordered w-full max-w-xs"
+		/>
 		<div class="label"></div>
 	</label>
 
@@ -190,13 +406,6 @@
 	</label>
 
 	<div class="flex space-x-1">
-		<button
-			type="button"
-			class="btn btn-error"
-			on:click={() => {
-				closeModal();
-			}}>Cerrar</button
-		>
 		<button type="submit" class="btn flex-1 btn-success">Guardar</button>
 	</div>
 </form>
