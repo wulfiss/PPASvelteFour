@@ -67,7 +67,7 @@
 
 	async function onFormSubmit() {
 		try {
-			const response = await fetch('/private/chlorine/endpoints/form', {
+			const response = await fetch('/private/eviscerado/endpoints/intermedia', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

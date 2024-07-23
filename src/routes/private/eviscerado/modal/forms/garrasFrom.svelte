@@ -31,7 +31,7 @@
 
 	async function onFormSubmit() {
 		try {
-			const response = await fetch('/private/eviscerado/endpoints/eviscerado', {
+			const response = await fetch('/private/eviscerado/endpoints/garras', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
