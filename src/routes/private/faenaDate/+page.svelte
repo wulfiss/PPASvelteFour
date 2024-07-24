@@ -17,8 +17,7 @@
 </script>
 
 <div class="container mx-auto p-4">
-	<h1 class="text-3xl font-bold mb-6">Datos de Aves de Corral Combinados</h1>
-
+	<h1 class="text-3xl font-bold mb-6">Faenas por fechas</h1>
 	{#if data.combinedPoultryData && data.combinedPoultryData.length > 0}
 		<div class="space-y-6">
 			{#each data.combinedPoultryData as dayData}
@@ -42,61 +41,117 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>Eviscerado</td>
+													<td class="font-bold">Eviscerado</td>
 													<td>
-														Cogotes: {entry.cogotes}
-														<br />Pulmones: {entry.pulmones}
-														<br />Cloacas: {entry.cloacas}
-														<br />Patas Fracturadas: {entry.patasFracturadas}
-														<br />Sangre en tronquitos: {entry.sangre ? 'Sí' : 'No'}
-														<br />Observaciones: {entry.eviscerado_observaciones}
+														<span class="font-semibold">Cogotes: </span>{entry.cogotes}
+														<br /><span class="font-semibold">Pulmones: </span>{entry.pulmones}
+														<br /><span class="font-semibold">Cloacas: </span>{entry.cloacas}
+														<br /><span class="font-semibold"
+															>Patas Fracturadas:
+														</span>{entry.patasFracturadas}
+														<br /><span class="font-semibold"
+															>Sangre en tronquitos:
+														</span>{entry.sangre ? 'Sí' : 'No'}
+														<br /><span class="font-semibold"
+															>Observaciones:
+														</span>{entry.eviscerado_observaciones}
 													</td>
 												</tr>
 
 												<tr>
-													<td>Garras</td>
+													<td class="font-bold">Garras</td>
 													<td>
-														Lindas: {entry.garras_lindas ? 'Sí' : 'No'}
-														<br />Regulares: {entry.garras_regulares ? 'Sí' : 'No'}
-														<br />Feas: {entry.garras_feas ? 'Sí' : 'No'}
-														<br />Observaciones: {entry.garras_observaciones}
+														<span class="font-semibold"> Calidad: </span>
+														<span class="">
+															{#if entry.garras_lindas}
+																Lindas
+															{/if}
+															{#if entry.garras_regulares}
+																Regulares
+															{/if}
+															{#if entry.garras_feas}
+																Feas
+															{/if}
+														</span>
+														<br />
+														<span class="font-semibold"> Observaciones: </span>
+														{entry.garras_observaciones}
 													</td>
 												</tr>
 												<tr>
-													<td>Intermedia</td>
+													<td class="font-bold">Intermedia</td>
 													<td>
-														Tamaño de Pollos <br />Chicos: {entry.pollos_chicos ? 'Sí' : 'No'},
-														Medianos: {entry.pollos_medianos ? 'Sí' : 'No'}, Grandes: {entry.pollos_grandes
-															? 'Sí'
-															: 'No'}, Desparejos: {entry.pollos_desparejos ? 'Sí' : 'No'}
-														<br />Buches: {entry.buches}, Chicos: {entry.buches_pequenos
-															? 'Sí'
-															: 'No'}, Medianos: {entry.buches_medianos ? 'Sí' : 'No'}, Grandes: {entry.buches_grandes
-															? 'Sí'
-															: 'No'}
-														<br />Pollos Rotos: {entry.pollos_rotos}
-														<br />Alas Dislocadas <br />Con Hematomas Recientes: {entry.dislocadas_hematomas_recientes},
-														Con Hematomas Viejos: {entry.dislocadas_hematomas_viejos}, Con Sin
-														Hematomas: {entry.dislocadas_sin_hematomas}
-														<br />Alas Fracturadas<br /> Con Hematomas Recientes: {entry.fracturadas_hematomas_recientes},
-														Con Hematomas Viejos: {entry.fracturadas_hematomas_viejos}, Con Sin
-														Hematomas: {entry.fracturadas_sin_hematomas}, Puntas de Alas: {entry.puntas_quebradas}
-														<br />Dermatitis: {entry.dermatitis}<br /> Leve: {entry.dermatitis_leve
-															? 'Sí'
-															: 'No'}, Moderada: {entry.dermatitis_moderada ? 'Sí' : 'No'}, Severa: {entry.dermatitis_severa
-															? 'Sí'
-															: 'No'}
-														<br />Traqueas: {entry.traqueas}
-														<br />Miopatia: {entry.miopatias}
-														<br />Observaciones: {entry.intermedia_observaciones}
+														<span class="font-semibold">Tamaño de Pollos:</span>
+														<span class="">
+															{#if entry.pollos_chicos}
+																Pequeños
+															{/if}
+															{#if entry.pollos_medianos}
+																Medianos
+															{/if}
+															{#if entry.pollos_grandes}
+																Grandes
+															{/if}
+															{#if entry.pollos_desparejos}
+																- Desparejos
+															{/if}
+														</span>
+														<br />
+														<span class="font-semibold">Buches:</span>
+														{entry.buches}
+														<span class=""
+															>(
+															{#if entry.buches_pequenos}
+																Chicos
+															{/if}
+															{#if entry.buches_medianos}
+																Medianos
+															{/if}
+															{#if entry.buches_grandes}
+																Grandes
+															{/if})
+														</span>
+														<br /><span class="font-semibold">Pollos Rotos:</span>
+														{entry.pollos_rotos}
+														<p class="font-semibold">Alas Dislocadas</p>
+														<p class="m-3">
+															Con Hematomas Recientes: {entry.dislocadas_hematomas_recientes}
+															<br />Con Hematomas Viejos: {entry.dislocadas_hematomas_viejos}
+															<br />Sin Hematomas: {entry.dislocadas_sin_hematomas}
+														</p>
+														<p class="font-semibold">Alas Fracturadas</p>
+														<p class="m-3">
+															Con Hematomas Recientes: {entry.fracturadas_hematomas_recientes}
+															<br />Con Hematomas Viejos: {entry.fracturadas_hematomas_viejos},
+															<br />Sin Hematomas: {entry.fracturadas_sin_hematomas}
+															<br />Puntas de Alas: {entry.puntas_quebradas}
+														</p>
+														<br /><span class="font-semibold">Dermatitis:</span>
+														{entry.dermatitis}
+														<span class=""
+															>(
+															{#if entry.dermatitis_leve}
+																Leve
+															{/if}
+															{#if entry.dermatitis_moderada}
+																Moderada
+															{/if}
+															{#if entry.dermatitis_severa}
+																Severa
+															{/if})
+														</span>
+														<br />
+														<span class="font-semibold">Traqueas:</span>
+														{entry.traqueas}
+														<br /><span class="font-semibold">Miopatia:</span>
+														{entry.miopatias}
+														<br /><span class="font-semibold">Observaciones:</span>
+														{entry.intermedia_observaciones}
 													</td>
 												</tr>
 												<tr>
-													<td>Cloro Libre</td>
-													<td>
-														Hora: {entry.cloro_hora}, Sector: {entry.cloro_sector}, Grifo: {entry.cloro_grifo},
-														Concentración: {entry.cloro_concentracion}
-													</td>
+													<td class="font-bold">Cloro Libre</td>
+													<td> VER </td>
 												</tr>
 											</tbody>
 										</table>
