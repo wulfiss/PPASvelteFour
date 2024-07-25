@@ -3,6 +3,7 @@
 	import EvisceradoForm from './forms/EvisceradoForm.svelte';
 	import IntermediaForm from './forms/IntermediaForm.svelte';
 	import GarrasFrom from './forms/garrasFrom.svelte';
+	import Allform from './forms/Allform.svelte';
 
 	export let flag: any = null;
 
@@ -16,7 +17,9 @@
 	<dialog id="my_modal_2" class="modal" open>
 		<div class="modal-box">
 			<div class="modal-action flex justify-center mt-0">
-				<div role="tablist" class="tabs tabs-lifted size-full">
+				<Allform />
+
+				<!-- 			<div role="tablist" class="tabs tabs-lifted size-full">
 					<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Intermedia" />
 					<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 						<IntermediaForm />
@@ -38,7 +41,7 @@
 					<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 						<GarrasFrom />
 					</div>
-				</div>
+				</div> -->
 				<button class="btn btn-sm btn-circle btn-error right-5 top-3 absolute" on:click={closeModal}
 					>✕</button
 				>
