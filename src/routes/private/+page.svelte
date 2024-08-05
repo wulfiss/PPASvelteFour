@@ -2,6 +2,7 @@
 	import type { PageData } from './$types';
 	import AddFormModal from './chlorine/modal/addFormModal/AddFormModal.svelte';
 	import AddInterEvisceModal from './eviscerado/modal/addInterEvisceModal.svelte';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 
@@ -30,6 +31,8 @@
 		closeInterEvisceModal();
 	};
 
+	const openForm = () => goto('/private/eviscerado/');
+
 	$: ({ supabase, user } = data);
 </script>
 
@@ -43,7 +46,7 @@
 		<li>
 			<button class="btn" on:click={openFormModal}> Agregar Cloro </button>
 		</li>
-		<li><button class="btn" on:click={openInterEvisceModal}> Intermedia / Eviscerado </button></li>
+		<li><button class="btn" on:click={openForm}> Intermedia / Eviscerado </button></li>
 	</ul>
 </div>
 
@@ -53,8 +56,8 @@
 	on:submitSuccess={onFormModal}
 />
 
-<AddInterEvisceModal
+<!-- <AddInterEvisceModal
 	bind:flag={modalState.isEvisceInterOpen}
 	on:close={closeInterEvisceModal}
 	on:submitSuccess={onInterEvisceModal}
-/>
+/> -->
