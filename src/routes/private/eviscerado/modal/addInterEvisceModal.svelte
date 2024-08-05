@@ -12,12 +12,14 @@
 	}
 </script>
 
+<Allform />
+
 <!-- <button class="btn fixed bottom-4 right-4" on:click={() =>my_modal_1.showModal()}>Agregar medición</button> -->
-{#if flag}
+<!-- {#if flag}
 	<dialog id="my_modal_2" class="modal" open>
 		<div class="modal-box">
 			<div class="modal-action flex justify-center mt-0">
-				<Allform />
+				<Allform /> -->
 
 				<!-- 			<div role="tablist" class="tabs tabs-lifted size-full">
 					<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Intermedia" />
@@ -42,10 +44,10 @@
 						<GarrasFrom />
 					</div>
 				</div> -->
-				<button class="btn btn-sm btn-circle btn-error right-5 top-3 absolute" on:click={closeModal}
+<!-- 				<button class="btn btn-sm btn-circle btn-error right-5 top-3 absolute" on:click={closeModal}
 					>✕</button
 				>
 			</div>
 		</div>
 	</dialog>
-{/if}
+{/if} -->
