@@ -108,43 +108,50 @@
 
 <form
 	id="intermediaForm"
-	class="w-full max-w-xs flex"
+	class=""
 	method="POST"
 	on:submit|preventDefault={onFormSubmit}
 >
-	<div id="info">
-		<label class="form-control w-full">
-			<div class="label">
-				<span class="label-text">Fecha</span>
-			</div>
-			<input
-				type="date"
-				name="date"
-				bind:value={data.fecha}
-				placeholder="Type here"
-				class="input input-bordered w-full"
-			/>
-			<div class="label"></div>
-		</label>
-
-		<label class="form-control w-full">
-			<div class="label">
-				<span class="label-text">Productor</span>
-			</div>
-			<input
-				type="text"
-				name="granja"
-				bind:value={data.productor}
-				placeholder="nombre"
-				class="input input-bordered w-full"
-			/>
-			<div class="label"></div>
-		</label>
+<div class="flex w-full flex-col lg:flex-row">
+	<div class="card bg-base-100 rounded-box h-fit grid flex-grow place-items-center">
+		<div id="info">
+			<label class="form-control">
+				<div class="label">
+					<span class="label-text">Fecha</span>
+				</div>
+				<input
+					type="date"
+					name="date"
+					bind:value={data.fecha}
+					placeholder="Type here"
+					class="input input-bordered"
+				/>
+				<div class="label"></div>
+			</label>
+	
+			<label class="form-control w-full">
+				<div class="label">
+					<span class="label-text">Productor</span>
+				</div>
+				<input
+					type="text"
+					name="granja"
+					bind:value={data.productor}
+					placeholder="nombre"
+					class="input input-bordered w-full"
+				/>
+				<div class="label"></div>
+			</label>
+		</div>
 	</div>
+<div class="divider lg:divider-horizontal"></div>
+
+
+<div class="card bg-base-100 rounded-box h-fit grid flex-grow place-items-center">
 	<div id="intermedia">
 		<div class="divider divider-primary">Tamaños</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Pequeños</span>
 				<input
@@ -155,7 +162,7 @@
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Medianos</span>
 				<input
@@ -166,7 +173,7 @@
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Grandes</span>
 				<input
@@ -177,7 +184,7 @@
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Desparejos</span>
 				<input
@@ -205,7 +212,7 @@
 			<div class="label"></div>
 		</label>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Pequeños</span>
 				<input
@@ -216,7 +223,7 @@
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Medianos</span>
 				<input
@@ -227,7 +234,7 @@
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Grandes</span>
 				<input
@@ -374,7 +381,7 @@
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Moderada</span>
 				<input
@@ -385,7 +392,7 @@
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Severa</span>
 				<input
@@ -444,15 +451,21 @@
 			</div>
 		</label>
 	</div>
+</div>
+<div class="divider lg:divider-horizontal"></div>
+
+
+<div class="card bg-base-100 rounded-box h-fit grid flex-grow place-items-center">
 	<div id="garras">
-		<div class="form-control">
+		<div class="divider divider-primary">Garras</div>
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Feas</span>
 				<input type="checkbox" bind:checked={data.garras_feas} class="checkbox checkbox-primary" />
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Regulares</span>
 				<input
@@ -463,7 +476,7 @@
 			</label>
 		</div>
 
-		<div class="form-control">
+		<div class="form-control w-full">
 			<label class="label cursor-pointer">
 				<span class="label-text">Lindas</span>
 				<input
@@ -490,6 +503,11 @@
 			</div>
 		</label>
 	</div>
+</div>
+<div class="divider lg:divider-horizontal"></div>
+
+
+<div class="card bg-base-100 rounded-box h-fit grid flex-grow place-items-center">
 	<div id="eviscerado">
 		<label class="form-control w-full">
 			<div class="label">
@@ -576,12 +594,20 @@
 			</div>
 		</label>
 	</div>
+</div>
 
-	<div class="flex space-x-1">
+<div class="divider lg:divider-horizontal"></div>
+<div class="m-2 md:m-0 flex space-x-1">
+		<button
+		type="button"
+		class="btn btn-error"
+		on:click={() => {
+		}}>Cerrar</button
+	>
 		{#if data.productor != ''}
 			<button type="submit" class="btn flex-1 btn-success">Guardar</button>
 		{:else}
-			<button class="btn btn-disabled flex-1" tabindex="-1" aria-disabled="true">>Guardar</button>
+			<button class="btn btn-disabled flex-1" tabindex="-1" aria-disabled="true">Guardar</button>
 		{/if}
-	</div>
+</div>
 </form>
