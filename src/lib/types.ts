@@ -23,19 +23,19 @@ export interface sectorOneData {
 	dermatitis_moderada: boolean;
 	dermatitis_severa: boolean;
 	traqueas?: number;
-	intermedia_observaciones?: string;
-	garras_lindas?: boolean;
-	garras_regulares?: boolean;
-	garras_feas?: boolean;
-	garras_observaciones?: string;
+	garras_lindas: boolean;
+	garras_regulares: boolean;
+	garras_feas: boolean;
+	observaciones_garras?: string;
 	cogotes?: number;
 	pulmones?: number;
 	cloacas?: number;
 	patas_fracturadas?: number;
 	sangre?: boolean;
-	eviscerado_observaciones?: string;
+	observaciones_eviscerado: string;
 
 	[key: `pollos_${string}`]: boolean;
 	[key: `buches_${string}`]: boolean;
 	[key: `dermatitis_${string}`]: boolean;
+	[key: `garras_${string}`]: boolean;
 }

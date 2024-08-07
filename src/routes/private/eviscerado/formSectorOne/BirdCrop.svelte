@@ -22,7 +22,7 @@
 	<div class="label"></div>
 </label>
 
-<div class="divider divider-primary w-3/4">Tamaños de Buches</div>
+<!-- <div class="divider divider-primary w-3/4">Tamaños de Buches</div> -->
 {#each ['chicos', 'medianos', 'grandes'] as size}
 	<div class="form-control w-3/4 md:w-full">
 		<label class="label cursor-pointer">

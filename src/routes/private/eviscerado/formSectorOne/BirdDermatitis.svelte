@@ -5,6 +5,7 @@
 	export let sectorOneStore: Writable<sectorOneData>;
 </script>
 
+<div class="divider divider-primary w-3/4">Dermatitis</div>
 <label class="form-control w-3/4 md:w-full">
 	<div class="label">
 		<span class="label-text">Dermatitis (%)</span>

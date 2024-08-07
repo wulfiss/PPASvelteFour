@@ -1,39 +1,26 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import AddFormModal from './chlorine/modal/addFormModal/AddFormModal.svelte';
-	import AddInterEvisceModal from './eviscerado/modal/addInterEvisceModal.svelte';
 	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 
 	type ModalState = {
 		isFormOpen: boolean;
-		isEvisceInterOpen: boolean;
 	};
 
 	const modalState: ModalState = {
-		isFormOpen: false,
-		isEvisceInterOpen: false
+		isFormOpen: false
 	};
 
 	const openFormModal = () => (modalState.isFormOpen = true);
 	const closeFormModal = () => (modalState.isFormOpen = false);
-	const openInterEvisceModal = () => (modalState.isEvisceInterOpen = true);
-	const closeInterEvisceModal = () => (modalState.isEvisceInterOpen = false);
 
 	const onFormModal = async () => {
-		/* await invalidate('cloroLibre'); */
 		closeFormModal();
 	};
 
-	const onInterEvisceModal = async () => {
-		/* await invalidate('cloroLibre'); */
-		closeInterEvisceModal();
-	};
-
 	const openForm = () => goto('/private/eviscerado/');
-
-	$: ({ supabase, user } = data);
 </script>
 
 <div class="dropdown dropdown-top dropdown-end absolute bottom-0 right-0">
@@ -55,11 +42,3 @@
 	on:close={closeFormModal}
 	on:submitSuccess={onFormModal}
 />
-
-<!-- <AddInterEvisceModal
-	bind:flag={modalState.isEvisceInterOpen}
-	on:close={closeInterEvisceModal}
-	on:submitSuccess={onInterEvisceModal}
-/> -->
-
-  

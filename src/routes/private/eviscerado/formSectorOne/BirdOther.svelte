@@ -9,38 +9,20 @@
 		key: keyof sectorOneData;
 	};
 
-	const dermatitisInputField: InputField[] = [
+	const inputField: InputField[] = [
 		{
-			label: 'Dermatitis leve (%)',
-			key: 'dermatitis_leve'
+			label: 'Miopatias (%)',
+			key: 'miopatias'
 		},
 		{
-			label: 'Dermatitis moderada (%)',
-			key: 'dermatitis_moderada'
-		},
-		{
-			label: 'Dermatitis severa (%)',
-			key: 'dermatitis_severa'
+			label: 'Traqueas (%)',
+			key: 'traqueas'
 		}
 	];
 </script>
 
-<label class="form-control w-3/4 md:w-full">
-	<div class="label">
-		<span class="label-text">Dermatitis (%)</span>
-	</div>
-	<input
-		bind:value={$sectorOneStore.dermatitis}
-		type="number"
-		name="puntasFracturadas"
-		min="0"
-		placeholder="Type here"
-		class="input input-bordered"
-	/>
-	<div class="label"></div>
-</label>
-
-{#each dermatitisInputField as field}
+<div class="divider divider-primary w-3/4">Otros</div>
+{#each inputField as field}
 	<label class="form-control w-3/4 md:w-full">
 		<div class="label">
 			<span class="label-text">{field.label}</span>
