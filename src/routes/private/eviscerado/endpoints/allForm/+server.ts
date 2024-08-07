@@ -1,28 +1,24 @@
-import { json, error } from "@sveltejs/kit";
+import { json, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ locals: { supabase, safeGetSession }, request }) => {
-       
-    const session = await safeGetSession();
-    
-    if (!session) {
-        throw error(401, 'Unauthorized');
-    }
+	const session = await safeGetSession();
 
-    try{
-        const data = await request.json();
+	if (!session) {
+		throw error(401, 'Unauthorized');
+	}
 
-        const { error: dbError } = await supabase
-        .from("sala_de_enfriado")
-        .insert(data);
+	try {
+		const data = await request.json();
 
-        if (dbError) {
-            throw error(500, { message: `Supabase error: ${dbError.message}` });
-        }
-        return json({ message: "Data inserted successfully"});
-    } catch (err) {
-        console.error('Error processing request:', err);
-        throw error(500, 'Internal server error');
-    }
-   
-}
+		const { error: dbError } = await supabase.from('Sector_One').insert(data);
+
+		if (dbError) {
+			throw error(500, { message: `Supabase error: ${dbError.message}` });
+		}
+		return json({ message: 'Data inserted successfully' });
+	} catch (err) {
+		console.error('Error processing request:', err);
+		throw error(500, 'Internal server error');
+	}
+};
