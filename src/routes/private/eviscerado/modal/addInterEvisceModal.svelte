@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import EvisceradoForm from './forms/EvisceradoForm.svelte';
 	import IntermediaForm from './forms/IntermediaForm.svelte';
@@ -11,9 +11,9 @@
 		flag = false;
 	}
 </script>
-
-<Allform />
-
+ -->
+<!-- <Allform />
+ -->
 <!-- <button class="btn fixed bottom-4 right-4" on:click={() =>my_modal_1.showModal()}>Agregar medición</button> -->
 <!-- {#if flag}
 	<dialog id="my_modal_2" class="modal" open>
