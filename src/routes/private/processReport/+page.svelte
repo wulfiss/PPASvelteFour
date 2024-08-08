@@ -4,6 +4,8 @@
 	
 	$: data = $page.data;
 
+	console.log(data);
+
 	const navigateToDetails = (fecha: any, productor: any) => {
 		goto(`/private/processReport/${fecha}/${productor}`);
 	};
