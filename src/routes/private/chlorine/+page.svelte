@@ -138,7 +138,8 @@
 					</td>
 					<td class="text-center flex">
 						<!-- <button class="btn btn-sm btn-primary mr-2">Editar</button> -->
-						<button on:click={() => openDeleteModal(item)} class="btn btn-sm btn-error">
+						<button on:click={() => openDeleteModal(item)} class="btn btn-ghost btn-xs">
+							
 							Eliminar
 						</button>
 						<!-- <DeleteButton id={item.id} on:deleted={handleItemDeleted} /> -->
