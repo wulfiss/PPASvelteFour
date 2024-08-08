@@ -40,7 +40,7 @@
 				>
 					<li><a href="/private/">Inicio</a></li>
 					<li><a href="/private/chlorine">Cloro</a></li>
-					<li><a href="/private/faenaDate">Faena por fecha</a></li>
+					<li><a href="/private/processReport">Faena por fecha</a></li>
 					<li><a href="/" on:click={logout}>Cerrar sesion</a></li>
 				</ul>
 			</div>
