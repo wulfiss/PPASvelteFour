@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ depends, params, locals: { supabase } }) => {
 	depends('supabase:db:Sector_One');
-	const { data: productor, error: supabaseError } = await supabase.from('Sector_One')
+	const { data: data, error: supabaseError } = await supabase.from('Sector_One')
         .select('*')
         .eq('fecha', params.fecha)
         .eq('productor', params.productor)
@@ -13,5 +13,5 @@ export const load: PageServerLoad = async ({ depends, params, locals: { supabase
 		throw error(500, 'Error fetching data from Supabase' + supabaseError.message);
 	}
 
-	return { productor };
+	return { data };
 };
