@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-    import { page as currentPage } from '$app/stores';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
-	const navigateToDetails = (fecha: any, productor: any) => {
+	const navigateToDetails = (fecha: never, productor: never) => {
 		goto(`/private/processReport/${fecha}/${productor}`);
 	};
 
