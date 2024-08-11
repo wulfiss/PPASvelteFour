@@ -1,0 +1,6 @@
+{
+    "eslint.validate": ["javascript", "svelte"],
+    "prettier.documentSelectors": ["**/*.svelte"],
+    "tailwindCSS.experimental.classRegex": [],
+    "editor.formatOnSave": true
+}
