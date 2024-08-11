@@ -58,7 +58,7 @@
 														</span>{data.observaciones_eviscerado}
 													</td>
 												</tr>
-
+												<div class="divider divider-accent w-full"></div>
 												<tr>
 													<td class="font-bold">Garras</td>
 													<td>
@@ -79,6 +79,7 @@
 														{data.observaciones_garras}
 													</td>
 												</tr>
+												<div class="divider divider-accent w-full"></div>
 												<tr>
 													<td class="font-bold">Intermedia</td>
 													<td>
