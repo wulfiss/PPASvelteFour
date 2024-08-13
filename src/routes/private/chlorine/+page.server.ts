@@ -40,6 +40,7 @@ export const load: PageServerLoad = async ({ depends, locals: { supabase }, url 
 
 	query = query
 		.order('fecha', { ascending: false })
+		.order('hora', { ascending: false });
 		.range((page - 1) * pageSize, page * pageSize - 1);
 
 	const { data: cloroLibre, error: supabaseError } = await query;
