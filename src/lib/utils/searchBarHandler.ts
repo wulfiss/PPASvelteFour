@@ -1,7 +1,6 @@
 import { goto } from '$app/navigation';
 
 function handleSearch(searchInput: string) {
-    console.log('enter');
     if (searchInput.trim() === '') {
         goto(`?page=1`);
     } else {
