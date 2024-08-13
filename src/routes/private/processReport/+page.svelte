@@ -85,7 +85,7 @@
 		  			<td>{date.fecha}</td>
 		  			<td>{date.productor}</td>
 					<th>
-						<button class="btn btn-ghost btn-xs" on:click={() => navigateToDetails(date.fecha, date.productor)}>details</button>
+						<button class="btn btn-ghost btn-xs" on:click={() => navigateToDetails(date.fecha, date.productor)}>Detalles</button>
 					</th>
 				</tr>
 	  		{/each}

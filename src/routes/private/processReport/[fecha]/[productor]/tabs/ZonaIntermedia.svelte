@@ -11,8 +11,6 @@
 			day: 'numeric'
 		});
 	}
-
-    console.log(datas);
 </script>
 
 <div class="container mx-auto p-4">
@@ -42,47 +40,11 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td class="font-bold">Eviscerado</td>
-													<td>
-														<span class="font-semibold">Cogotes: </span>{data.cogotes}
-														<br /><span class="font-semibold">Pulmones: </span>{data.pulmones}
-														<br /><span class="font-semibold">Cloacas: </span>{data.cloacas}
-														<br /><span class="font-semibold"
-															>Patas Fracturadas:
-														</span>{data.patas_fracturadas}
-														<br /><span class="font-semibold"
-															>Sangre en patas:
-														</span>{data.sangre ? 'Sí' : 'No'}
-														<br /><span class="font-semibold"
-															>Observaciones:
-														</span>{data.observaciones_eviscerado}
-													</td>
-												</tr>
-												<div class="divider divider-accent w-full"></div>
-												<tr>
-													<td class="font-bold">Garras</td>
-													<td>
-														<span class="font-semibold"> Calidad: </span>
-														<span class="">
-															{#if data.garras_lindas}
-																Lindas
-															{/if}
-															{#if data.garras_regulares}
-																Regulares
-															{/if}
-															{#if data.garras_feas}
-																Feas
-															{/if}
-														</span>
-														<br />
-														<span class="font-semibold"> Observaciones: </span>
-														{data.observaciones_garras}
-													</td>
-												</tr>
-												<div class="divider divider-accent w-full"></div>
-												<tr>
 													<td class="font-bold">Intermedia</td>
 													<td>
+														<span class="font-semibold">Observaciones de las Aves:</span>
+														{data.observaciones_aves}
+														<br />
 														<span class="font-semibold">Tamaño de Pollos:</span>
 														<span class="">
 															{#if data.pollos_chicos}
@@ -152,10 +114,52 @@
 														{data.traqueas}
 														<br /><span class="font-semibold">Miopatia:</span>
 														{data.miopatias}
-														<br /><span class="font-semibold">Observaciones:</span>
-														{data.intermedia_observaciones}
 													</td>
 												</tr>
+												<div class="divider divider-accent w-full"></div>
+												<tr>
+													<td class="font-bold">Garras</td>
+													<td>
+														<span class="font-semibold"> Calidad: </span>
+														<span class="">
+															{#if data.garras_lindas}
+																Lindas
+															{/if}
+															{#if data.garras_regulares}
+																Regulares
+															{/if}
+															{#if data.garras_feas}
+																Feas
+															{/if}
+														</span>
+														<br />
+														<span class="font-semibold"> Observaciones: </span>
+														{data.observaciones_garras}
+													</td>
+												</tr>
+												<div class="divider divider-accent w-full"></div>
+												<tr>												
+													<td class="font-bold">Eviscerado</td>
+												<td>
+													<span class="font-semibold">Cogotes: </span>{data.cogotes}
+													<br /><span class="font-semibold">Pulmones: </span>{data.pulmones}
+													<br /><span class="font-semibold">Cloacas: </span>{data.cloacas}
+													<br /><span class="font-semibold"
+														>Patas Fracturadas:
+													</span>{data.patas_fracturadas}
+													<br /><span class="font-semibold"
+														>Sangre en patas:
+													</span>{data.sangre ? 'Sí' : 'No'}
+													<br />
+												</td>
+											</tr>
+											<div class="divider divider-accent w-full"></div>
+											<tr>												
+												<td class="font-bold">Observaciones generales</td>
+											<td>
+												<span class="font-semibold"></span>{data.observaciones_generales}
+											</td>
+										</tr>
 											</tbody>
 										</table>
 									</div>
