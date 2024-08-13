@@ -69,7 +69,7 @@
 		goto(`?page=1`);
 	}
 
-	const debounce = (callback: Function, wait = 200) => {
+	const debounce = (callback: Function, wait = 350) => {
     	let timeout: ReturnType<typeof setTimeout>;
     	return (...args: any[]) => {
         	clearTimeout(timeout);
