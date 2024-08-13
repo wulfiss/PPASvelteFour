@@ -1,16 +1,28 @@
 <script lang="ts">
+ 	import { invalidate } from '$app/navigation';
+
 	import Downloadbtn from './downloadButton/downloadBtn.svelte';
-	import PaginationBtn from '$lib/components/paginationButton/paginationBtn.svelte';
-	import { goto, invalidate } from '$app/navigation';
 	import DeleteConfirmationModal from './modal/deleteModal/DeleteModal.svelte';
 	import AddFormModal from './modal/addFormModal/AddFormModal.svelte';
-    import { page as currentPage } from '$app/stores';
-	import type { PageData } from './$types';
+	import Pagination from '$lib/components/pagination/Pagination.svelte';
 
-	type ModalState = {
-		isFormOpen: boolean;
-		itemToDelete: any | null;
-	};
+	import type { PageData } from './$types';
+	import type { ModalState } from '$lib/types';
+
+	import debounce from '$lib/utils/debounce';
+	import chlorineConcentrationBadge from '$lib/utils/chlorineConcentrationBadge';
+	import handleSearch from '$lib/utils/searchBarHandler';
+ 
+
+	export let data: PageData;
+
+	$: ({ cloroLibre, totalItems, pageSize, searchTerm, page } = data);
+	
+	let searchInput = searchTerm;
+
+	const search = debounce(() => {
+		handleSearch(searchInput);
+	}, 400);
 
 	const modalState: ModalState = {
 		isFormOpen: false,
@@ -32,50 +44,6 @@
 		closeFormModal();
 	};
 
-	$: concentracionClass = (concentracion: number) => {
-		if (concentracion >= 0.3 && concentracion <= 0.8) {
-			return 'badge badge-lg badge-success gap-2';
-		} else if (concentracion > 0.8 && concentracion <= 1) {
-			return 'badge badge-lg badge-warning gap-2';
-		} else if (concentracion < 0.3 && concentracion >= 0.2) {
-			return 'badge badge-lg badge-warning gap-2';
-		} else {
-			return 'badge badge-lg badge-error gap-2';
-		}
-	};
-
-	export let data: PageData;
-	
-	$: ({ cloroLibre, totalItems, pageSize, searchTerm, page } = data);
-	
-	$: totalPages = Math.ceil(totalItems / pageSize);
-
-	let searchInput = searchTerm;
-
-	function handleSearch() {
-		if (searchInput.trim() === '') {
-			goto(`?page=1`);
-		} else {
-			goto(`?search=${encodeURIComponent(searchInput)}&page=1`);
-		}
-	}
-
-	function changePage(newPage: number) {
-		goto(`?search=${encodeURIComponent(searchTerm)}&page=${newPage}`);
-	}
-
-	function clearSearch() {
-		searchInput = '';
-		goto(`?page=1`);
-	}
-
-	const debounce = (callback: Function, wait = 350) => {
-    	let timeout: ReturnType<typeof setTimeout>;
-    	return (...args: any[]) => {
-        	clearTimeout(timeout);
-        	timeout = setTimeout(() => callback(...args), wait);
-    	};
-	};
 </script>
 
 <div id="header" class="flex flex-row justify-center gap-2">
@@ -85,7 +53,7 @@
 			class="grow"
 			placeholder="Filtrar por fecha, sector o grifo"
 			bind:value={searchInput}
-			on:keyup={debounce(handleSearch)}
+			on:keyup={search}
 		/>
 		<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +78,6 @@
 </div>
 <div class="overflow-x-auto">
 	<table class="table table-zebra">
-		<!-- head -->
 		<thead>
 			<tr>
 				<th class="text-center">Fecha</th>
@@ -121,7 +88,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			<!-- body -->
 			{#each cloroLibre as item, i}
 				<tr>
 					<th class="text-center font-normal">{item.fecha}</th>
@@ -129,33 +95,27 @@
 					<td class="text-center">{item.sector}</td>
 					<td class="text-center">{item.grifo}</td>
 					<td class="text-center">
-						<div class={concentracionClass(item.concentracion)}>
+						<div class={chlorineConcentrationBadge(item.concentracion)}>
 							{item.concentracion.toFixed(2)}
 						</div>
 					</td>
 					<td class="text-center flex">
-						<!-- <button class="btn btn-sm btn-primary mr-2">Editar</button> -->
 						<button on:click={() => openDeleteModal(item)} class="btn btn-ghost btn-xs">
 							Eliminar
 						</button>
-						<!-- <DeleteButton id={item.id} on:deleted={handleItemDeleted} /> -->
 					</td></tr
 				>
 			{/each}
 		</tbody>
 	</table>
 </div>
-<div class="join flex flex-row justify-center mt-3">
-	<button class="join-item btn" disabled={page === 1} on:click={() => changePage(page - 1)}>«</button>
-	{#each Array(totalPages) as _, i}
-	  {#if i + 1 === 1 || i + 1 === totalPages || (i + 1 >= page - 1 && i + 1 <= page + 1)}
-		<button class="join-item btn" class:btn-active={page === i + 1} on:click={() => changePage(i + 1)}>{i + 1}</button>
-	  {:else if (i === 1 || i === totalPages - 2) && (page > 3 && page < totalPages - 2)}
-		<button class="join-item btn btn-disabled">...</button>
-	  {/if}
-	{/each}
-	<button class="join-item btn" disabled={page === totalPages} on:click={() => changePage(page + 1)}>»</button>
-  </div>
+
+<Pagination
+	searchTerm={searchInput}
+	page={page}
+	pageSize={pageSize}
+	totalItems={totalItems}
+/>
 
 <DeleteConfirmationModal
 	bind:item={modalState.itemToDelete}

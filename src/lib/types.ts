@@ -40,3 +40,8 @@ export interface sectorOneData {
 	[key: `dermatitis_${string}`]: boolean;
 	[key: `garras_${string}`]: boolean;
 }
+
+export interface ModalState  {
+	isFormOpen: boolean;
+	itemToDelete: never | null;
+};
