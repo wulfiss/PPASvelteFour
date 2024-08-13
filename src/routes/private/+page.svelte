@@ -1,9 +1,6 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import AddFormModal from './chlorine/modal/addFormModal/AddFormModal.svelte';
 	import { goto } from '$app/navigation';
-
-	export let data: PageData;
 
 	type ModalState = {
 		isFormOpen: boolean;
