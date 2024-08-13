@@ -1,6 +1,7 @@
 export interface sectorOneData {
 	fecha?: string;
 	productor?: string;
+	observaciones_aves?: string;
 	pollos_chicos: boolean;
 	pollos_medianos: boolean;
 	pollos_grandes: boolean;
@@ -32,7 +33,7 @@ export interface sectorOneData {
 	cloacas?: number;
 	patas_fracturadas?: number;
 	sangre?: boolean;
-	observaciones_eviscerado: string;
+	observaciones_generales: string;
 
 	[key: `pollos_${string}`]: boolean;
 	[key: `buches_${string}`]: boolean;
