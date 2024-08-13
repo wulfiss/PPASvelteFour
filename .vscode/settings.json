@@ -2,5 +2,9 @@
     "eslint.validate": ["javascript", "svelte"],
     "prettier.documentSelectors": ["**/*.svelte"],
     "tailwindCSS.experimental.classRegex": [],
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
