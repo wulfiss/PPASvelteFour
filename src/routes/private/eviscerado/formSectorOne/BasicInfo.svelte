@@ -2,9 +2,13 @@
 	import type { sectorOneData } from '$lib/types';
 	import type { Writable } from 'svelte/store';
 	import { nameStore } from '$lib/stores/productorsList';
+	import Combobox from '$lib/components/ComboBox/Combobox.svelte';
 
 	export let sectorOneStore: Writable<sectorOneData>;
 
+  	function handleSelect(event) {
+    	$sectorOneStore.productor = event.detail.selectedValue;
+  	}	
 
 </script>
 
@@ -24,20 +28,6 @@
 
 <!-- <label class="form-control w-3/4 md:w-full">
 	<div class="label">
-		<span class="label-text">Productor</span>
-	</div>
-	<input
-		type="text"
-		name="granja"
-		bind:value={$sectorOneStore.productor}
-		placeholder="nombre"
-		class="input input-bordered"
-	/>
-	<div class="label"></div>
-</label> -->
-
-<label class="form-control w-3/4 md:w-full">
-	<div class="label">
 	  <span class="label-text">Productor</span>
 	  <span class="label-text-alt"></span>
 	</div>
@@ -51,9 +41,18 @@
 	  <span class="label-text-alt"></span>
 	  <span class="label-text-alt"></span>
 	</div>
-  </label>
+  </label> -->
 
-  <div class="divider divider-primary w-3/4">Observaciones del Ave</div>
+<Combobox
+	classList= "form-control w-3/4 md:w-full"
+  	options={$nameStore}
+  	placeholder="Seleccionar un productor."
+  	bind:selectedValue={$sectorOneStore.productor}
+  	on:select={handleSelect}
+/>
+
+<div class="divider divider-primary w-3/4">Obs. de Aves</div>
+
 <label class="form-control w-3/4 md:w-full">
 	<div class="label">
 		<span class="label-text"></span>

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import sectorOneStore from '$lib/stores/sectorOneStore';
-	import type { sectorOneData } from '$lib/types';
 	import { goto } from '$app/navigation';
 	import BasicInfo from './formSectorOne/BasicInfo.svelte';
 	import BirdSizes from './formSectorOne/BirdSizes.svelte';
@@ -11,6 +10,8 @@
 	import BirdOther from './formSectorOne/BirdOther.svelte';
 	import Gutted from './formSectorOne/Gutted.svelte';
 	import ObservationSectorOne from './formSectorOne/ObservationSectorOne.svelte';
+
+	const closeForm = () => goto('/private/');
 
 	async function onFormSubmit() {
 		try {
@@ -24,9 +25,11 @@
 			if (!response.ok) {
 				throw new Error('Error al enviar los datos');
 			}
+			closeForm();
 			sectorOneStore.set({
 				fecha: '',
 				productor: '',
+				observaciones_aves: '',
 				pollos_chicos: false,
 				pollos_medianos: false,
 				pollos_grandes: false,
@@ -58,15 +61,14 @@
 				cloacas: 0,
 				patas_fracturadas: 0,
 				sangre: false,
-				observaciones_eviscerado: ''
+				observaciones_generales: ''
 			});
 		} catch (error) {
 			console.error('Error:', error);
 			alert('Error al enviar los datos');
 		}
 	}
-
-	const closeForm = () => goto('/private/');
+	
 </script>
 
 <form on:submit|preventDefault={onFormSubmit} class="flex flex-col lg:flex-row p-2">
