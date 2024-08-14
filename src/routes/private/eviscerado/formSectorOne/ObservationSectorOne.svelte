@@ -5,7 +5,7 @@
 	export let sectorOneStore: Writable<sectorOneData>;
 </script>
 
-<div class="divider divider-primary w-3/4">Observaciones Generales</div>
+<div class="divider divider-primary w-3/4">Obs. Generales</div>
 <label class="form-control w-3/4 md:w-full">
 	<div class="label">
 		<span class="label-text"></span>
