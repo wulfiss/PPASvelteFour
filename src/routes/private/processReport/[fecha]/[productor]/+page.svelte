@@ -98,7 +98,7 @@
     {:else if currentTab === 'Cloro'}
     <Cloro data={$page.data.cloroLibreData}/>
     {:else if currentTab === 'Observaciones'}
-    <Observaciones />
+    <Observaciones data={$page.data.generalObservationsData} />
     {:else if currentTab === 'Download'}
     <Download />
   {/if}

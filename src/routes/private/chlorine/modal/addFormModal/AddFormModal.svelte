@@ -57,7 +57,6 @@
 	}
 </script>
 
-<!-- <button class="btn fixed bottom-4 right-4" on:click={() =>my_modal_1.showModal()}>Agregar medición</button> -->
 {#if flag}
 	<dialog id="modal" class="modal" open>
 		<div class="modal-box">
@@ -115,7 +114,8 @@
 						<div class="label">
 							<span class="label-text">Grifo</span>
 						</div>
-						<input
+						{#if data.sector !== 'Zona Intermedia' && data.sector !== 'Sala de Trozado' && data.sector !== 'Empaque de Pollos'}
+							<input
 							bind:value={data.grifo}
 							type="number"
 							name="tap"
@@ -123,9 +123,19 @@
 							placeholder="Type here"
 							class="input input-bordered w-full"
 						/>
-						<div class="label"></div>
+						{:else}
+							<select bind:value={data.grifo} name="tap" class="select select-bordered w-full">
+								{#if data.sector === 'Zona Intermedia'}
+									<option selected>122</option>
+								{:else if data.sector === 'Sala de Trozado'}
+									<option selected>430</option>	
+									<option>433</option>
+								{:else if data.sector === 'Empaque de Pollos'}
+									<option selected>338</option>
+								{/if}
+							</select>
+						{/if}
 					</label>
-
 					<label class="form-control w-full">
 						<div class="label">
 							<span class="label-text">Concentración (ppm)</span>
@@ -142,15 +152,6 @@
 						/>
 						<div class="label"></div>
 					</label>
-
-					<!-- 					<label class="form-control w-full">
-						<div class="label">
-						  	<span class="label-text">Observaciones</span>
-						</div>
-							<textarea class="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
-						<div class="label"></div>
-					</label> -->
-
 					<div class="flex space-x-1">
 						<button
 							type="button"
