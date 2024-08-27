@@ -1,20 +1,29 @@
 <script lang="ts">
 	import AddFormModal from './chlorine/modal/addFormModal/AddFormModal.svelte';
+	import FormModalObservations from './generalObservations/form/FormModalObservations.svelte';
 	import { goto } from '$app/navigation';
 
 	type ModalState = {
-		isFormOpen: boolean;
+		isChlorineOpen: boolean;
+		isObservationsOpen: boolean;
 	};
 
 	const modalState: ModalState = {
-		isFormOpen: false
+		isChlorineOpen: false,
+		isObservationsOpen: false,
 	};
 
-	const openFormModal = () => (modalState.isFormOpen = true);
-	const closeFormModal = () => (modalState.isFormOpen = false);
+	const openChlorineModal = () => (modalState.isChlorineOpen = true);
+	const closeChlorineModal = () => (modalState.isChlorineOpen = false);
+	const openObservationsModal = () => (modalState.isObservationsOpen = true);
+	const closeObservationsModal = () => (modalState.isObservationsOpen = false);
 
-	const onFormModal = async () => {
-		closeFormModal();
+	const onChlorineModal = async () => {
+		closeChlorineModal();
+	};
+
+	const onObservationsModal = async () => {
+		closeObservationsModal();
 	};
 
 	const openForm = () => goto('/private/eviscerado/');
@@ -28,14 +37,25 @@
 		class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow flex flex-col gap-2"
 	>
 		<li>
-			<button class="btn" on:click={openFormModal}> Agregar Cloro </button>
+			<button class="btn" on:click={openChlorineModal}> Agregar Cloro </button>
 		</li>
-		<li><button class="btn" on:click={openForm}> Intermedia / Eviscerado </button></li>
+		<li>
+			<button class="btn" on:click={openForm}> Intermedia / Eviscerado </button>
+		</li>
+		<li>
+			<button class="btn" on:click={openObservationsModal}> Agregar Observaciones </button>
+		</li>
 	</ul>
 </div>
 
 <AddFormModal
-	bind:flag={modalState.isFormOpen}
-	on:close={closeFormModal}
-	on:submitSuccess={onFormModal}
+	bind:flag={modalState.isChlorineOpen}
+	on:close={closeChlorineModal}
+	on:submitSuccess={onChlorineModal}
+/>
+
+<FormModalObservations
+	bind:flag={modalState.isObservationsOpen}
+	on:close={closeObservationsModal}
+	on:submitSuccess={onObservationsModal}
 />
