@@ -24,5 +24,15 @@ export const load: PageServerLoad = async ({ depends, params, locals: { supabase
 		throw error(500, 'Error fetching data from Supabase' + supabaseErrorTwo.message);
 	}
 
-	return { zonaIntermediaData, cloroLibreData };
+    depends('supabase:db:General_Observations');
+	const { data: generalObservationsData, error: supabaseErrorThree } = await supabase.from('General_Observations')
+        .select('*')
+        .eq('fecha', params.fecha)
+        .order('fecha', { ascending: false })
+
+        if (supabaseErrorThree) {
+		throw error(500, 'Error fetching data from Supabase' + supabaseErrorThree.message);
+	}
+
+	return { zonaIntermediaData, cloroLibreData, generalObservationsData };
 };
