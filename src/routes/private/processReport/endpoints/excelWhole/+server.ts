@@ -32,11 +32,24 @@ export const GET: RequestHandler = async ({ locals: { supabase }, url }) => {
         throw error(500, { message: dbErrorTwo.message });
     }
 
+    const { data: General_Observations, error: dbErrorThree } = await supabase
+        .from('General_Observations')
+        .select('*')
+        .eq('fecha', fecha)
+        .order('fecha', { ascending: false });
+    
+
+    if (dbErrorThree) {
+        throw error(500, { message: dbErrorThree.message });
+    }
+
     const wsOne = XLSX.utils.json_to_sheet(CloroLibre);
     const wsTwo = XLSX.utils.json_to_sheet(zonaIntermediaData);
+    const wsThree = XLSX.utils.json_to_sheet(General_Observations);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, wsOne, "Cloro Libre");
     XLSX.utils.book_append_sheet(wb, wsTwo, "Zona Intermedia");
+    XLSX.utils.book_append_sheet(wb, wsThree, "Observaciones");
 
     const buf = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
 
