@@ -13,14 +13,14 @@
 	let today = date.toISOString().slice(0, 10); // YYYY-MM-DD
 
 	let data = {
-		date: today,
-		General_Observations: '',
+		fecha: today,
+		observaciones_generales: '',
 	};
 
 	function resetForm() {
 		data = {
-            date: today,
-            General_Observations: '',
+			fecha: today,
+			observaciones_generales: '',
 		};
 	}
 
@@ -64,14 +64,14 @@
 						<input
 							type="date"
 							name="date"
-							bind:value={data.date}
+							bind:value={data.fecha}
 							placeholder="Type here"
 							class="input input-bordered w-full"
 						/>
 						<div class="label"></div>
 					</label>
                     
-                    <label class="form-control w-3/4 md:w-full">
+                    <label class="form-control w-full">
                         <div class="label">
                             <span class="label-text"></span>
                             <span class="label-text-alt"></span>
@@ -79,7 +79,7 @@
                         <textarea
                             class="textarea textarea-bordered h-24"
                             placeholder="Observaciones"
-                            bind:value={data.General_Observations}
+                            bind:value={data.observaciones_generales}
                         ></textarea>
                         <div class="label">
                             <span class="label-text-alt"></span>
