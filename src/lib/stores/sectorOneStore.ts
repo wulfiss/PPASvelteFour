@@ -4,6 +4,8 @@ import type { sectorOneData } from '$lib/types';
 const sectorOneStore: Writable<sectorOneData> = writable({
 	fecha: '',
 	productor: '',
+	granja: '',
+	galpon: '',
 	observaciones_aves: '',
 	pollos_chicos: false,
 	pollos_medianos: false,

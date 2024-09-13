@@ -1,6 +1,16 @@
+export interface BasicInfo {
+	fecha?: string;
+	productor?: string;
+	granja?: string;
+	galpon?: string;
+	observaciones_aves?: string;
+}
+
 export interface sectorOneData {
 	fecha?: string;
 	productor?: string;
+	granja?: string;
+	galpon?: string;
 	observaciones_aves?: string;
 	pollos_chicos: boolean;
 	pollos_medianos: boolean;
@@ -41,7 +51,17 @@ export interface sectorOneData {
 	[key: `garras_${string}`]: boolean;
 }
 
+export interface ZonaLimpiaData {
+	fecha?: string;
+	productor?: string;
+	granja?: string;
+	galpon?: string;
+}
+
+export type StoreValue = ZonaLimpiaData | BasicInfo | sectorOneData;
+
 export interface ModalState  {
 	isFormOpen: boolean;
 	itemToDelete: never | null;
 };
+

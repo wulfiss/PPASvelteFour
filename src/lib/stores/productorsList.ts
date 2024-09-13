@@ -38,5 +38,22 @@ const producersNames: string[] = [
   "Zilli Edgardo"
 ];
 
+const farmsNumber: string[] = [
+  "Granja 1",
+  "Granja 2",
+]
+
+const shedNumber: string[] = [
+  "Galpón 1",
+  "Galpón 2",
+  "Galpón 3",
+  "Galpón 4",
+  "Galpón 5",
+  "Galpón 6",
+]
+
+
 // Create a readonly store with the list of names
 export const nameStore = readable(producersNames);
+export const farmsStore = readable(farmsNumber);
+export const shedStore = readable(shedNumber);
