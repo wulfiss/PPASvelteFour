@@ -27,7 +27,7 @@
   };
 
   const openFormEviscerado = () => goto('/private/eviscerado/');
-  const openFormZonaLimpia = () => goto('/private/zonaLimpia/');
+  const openFormZonaLimpia = () => goto('/private/Empaque/');
 </script>
 
 <div class="dropdown dropdown-top dropdown-end absolute bottom-0 right-0">

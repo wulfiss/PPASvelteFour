@@ -1,16 +1,13 @@
 <script lang="ts">
-  import type { BasicInfo, ZonaLimpiaData, sectorOneData, StoreValue } from '$lib/types';
+  import type { ZonaLimpiaData } from '$lib/types';
   import type { Writable } from 'svelte/store';
   import { nameStore, farmsStore, shedStore } from '$lib/stores/productorsList';
   import Combobox from '$lib/components/ComboBox/Combobox.svelte';
 
-  export let store;
-  export let showObservation: boolean;
-
-  console.log('storeaaaaaa', $store);
+  export let zonaLimpiaStore: Writable<ZonaLimpiaData>;
 
   function handleSelect(event) {
-    $store.productor = event.detail.selectedValue;
+    $zonaLimpiaStore.productor = event.detail.selectedValue;
   }
 </script>
 
@@ -21,48 +18,27 @@
   <input
     type="date"
     name="date"
-    bind:value={store.fecha}
+    bind:value={$zonaLimpiaStore.fecha}
     placeholder="Type here"
     class="input input-bordered"
   />
   <div class="label"></div>
-  <div class="label">
-    <span class="label-text">Hora</span>
-  </div>
-  <input
-    type="time"
-    name="time"
-    bind:value={store.Hora}
-    placeholder="Type here"
-    class="input input-bordered"
-  />
-  <div class="label"></div>
-  <div class="label">
-    <span class="label-text">Productor</span>
-  </div>
-  <Combobox
-    classList="form-control w-3/4 md:w-full"
-    options={$nameStore}
-    placeholder="Seleccionar un productor."
-    bind:selectedValue={store.productor}
-    on:select={handleSelect}
-  />
 </label>
 
-<!-- <Combobox
+<Combobox
   classList="form-control w-3/4 md:w-full"
   options={$nameStore}
   placeholder="Seleccionar un productor."
-  bind:selectedValue={store.productor}
+  bind:selectedValue={$zonaLimpiaStore.productor}
   on:select={handleSelect}
-/> -->
+/>
 
 <label class="form-control w-3/4 md:w-full">
   <div class="label">
     <span class="label-text">Granja</span>
     <span class="label-text-alt"></span>
   </div>
-  <select bind:value={store.granja} class="select select-bordered">
+  <select bind:value={$zonaLimpiaStore.granja} class="select select-bordered">
     <option disabled selected>Seleccionar un granja</option>
     {#each $farmsStore as granja}
       <option value={granja}>{granja}</option>
@@ -79,7 +55,7 @@
     <span class="label-text">Galpón</span>
     <span class="label-text-alt"></span>
   </div>
-  <select bind:value={store.galpon} class="select select-bordered">
+  <select bind:value={$zonaLimpiaStore.galpon} class="select select-bordered">
     <option disabled selected>Seleccionar un Galpón</option>
     {#each $shedStore as galpon}
       <option value={galpon}>{galpon}</option>
@@ -90,23 +66,3 @@
     <span class="label-text-alt"></span>
   </div>
 </label>
-
-{#if showObservation}
-  <div class="divider divider-primary w-3/4">Obs. de Aves</div>
-
-  <label class="form-control w-3/4 md:w-full">
-    <div class="label">
-      <span class="label-text"></span>
-      <span class="label-text-alt"></span>
-    </div>
-    <textarea
-      class="textarea textarea-bordered h-24"
-      placeholder="Observaciones"
-      bind:value={store.observaciones_aves}
-    ></textarea>
-    <div class="label">
-      <span class="label-text-alt"></span>
-      <span class="label-text-alt"></span>
-    </div>
-  </label>
-{/if}
